@@ -1,0 +1,11 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\obj\Release\Techcycle.DB.NET.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\obj\Release\Techcycle.DB.NET.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Techcycle.DB.NET.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Techcycle.DB.NET.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\bin\Release\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\obj\Release\Techcycle.DB.NET.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\obj\Release\Techcycle.DB.NET.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.DB.NET\obj\Release\Techcycle.DB.NET.pdb

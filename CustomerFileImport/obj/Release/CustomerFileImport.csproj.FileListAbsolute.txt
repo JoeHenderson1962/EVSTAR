@@ -1,0 +1,15 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.csproj.SuggestedBindingRedirects.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\CustomerFileImport.exe.config
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\CustomerFileImport.exe
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\CustomerFileImport.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Techcycle.DB.NET.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Techcycle.DB.NET.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\bin\Release\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.exe
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Release\CustomerFileImport.pdb

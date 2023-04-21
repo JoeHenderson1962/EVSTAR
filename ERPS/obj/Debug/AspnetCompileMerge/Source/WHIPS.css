@@ -1,0 +1,134 @@
+﻿.widelist
+{
+    font-size: 12px;
+    color: Black;
+    font-family: Sans-Serif;
+}
+.widelistbold
+{
+    font-size: 14px;
+    color: Black;
+    font-weight:bold;
+    font-family: Sans-Serif;
+}
+a.menu:link     {
+	color: white;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+}
+a.menu:visited  {
+	color: yellow;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
+}
+a.menu:hover    {
+	color: white;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: underline overline;
+}
+
+a.page:link     {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+a.page:visited  {
+	color: yellow;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: underline;
+}
+a.page:hover    {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+.customer
+{
+    font-size: 13px;
+    color: blue;
+    font-weight: bold;
+    font-family: Sans-Serif;
+}
+.csr
+{
+    font-size: 12px;
+    color: Black;
+    font-weight:normal;
+    font-family: Sans-Serif;
+}
+.normal
+{
+    font-size: 13px;
+    color: Black;
+    font-family: Sans-Serif;
+}
+.status
+{
+    font-size: 13px;
+    color: Black;
+    font-family: Sans-Serif;
+}
+.menu
+{
+    font-size: 13px;
+    color: white;
+    font-family: Sans-Serif;
+}
+.historylink
+{
+    font-size: 13px;
+    color: blue;
+    font-family: Sans-Serif;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+.statusbold
+{
+    font-size: 13px;
+    color: Black;
+    font-family: Sans-Serif;
+    font-weight: bold;
+}
+.error
+{
+    font-size: 12px;
+    color: Red;
+    font-weight: bold;
+    font-family: Sans-Serif;
+}
+.sectionheader
+{
+    font-size: 18px;
+    color: Black;
+    font-weight: bold;
+    font-family: Sans-Serif;
+}
+.biglogofont
+{
+    font-size: 40px;
+    color:Navy;
+    font-weight:bolder;
+    font-style: italic;
+    font-family: Serif;
+}
+.helplink
+{
+    font-size: 14px;
+    color: Red;
+    font-family: Sans-Serif;
+    cursor: pointer;
+}

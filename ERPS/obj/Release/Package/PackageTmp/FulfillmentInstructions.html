@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div class="login-content-text-field1-desktop" style="margin-top: 50px;">
+        <span class="login-text-input-label-desktop">
+            <label id="lblScript" class="[CUSTOMERSCRIPTCSS]">[CUSTOMERSCRIPT]</label><br />
+        </span>
+    </div>
+    <div class="login-content-text-field2-desktop" style="position:absolute; top: 160px;display:none;" id="divReimbursementOptions">
+        <div>
+            <input type="radio" id="venmo" name="reimbursement" value="venmo"
+                   checked>
+            <label for="venmo">Venmo</label>
+        </div>
+
+        <div>
+            <input type="radio" id="paypal" name="reimbursement" value="paypal">
+            <label for="paypal">PayPal</label>
+        </div>
+
+        <div>
+            <input type="radio" id="check" name="reimbursement" value="check">
+            <label for="check">Check</label>
+        </div>
+
+        <div>
+            <br />
+            <label for="txtReimbursementAccount" class="customer" id="lblReimbursementAccount"></label>
+            <input type="text" id="txtReimbursementAccount" style="font-size: 1.3em; width:500px;" />
+        </div>
+    </div>
+    <div class="login-button-row-desktop" style="gap: 30px; position: absolute; top: 440px;">
+        <div class="button-desktop" id="btnBack" style="order: 0; text-align: center; width: 100px;">
+            <span class="button-text-inner-desktop" style="width: 63px;">Back</span>
+        </div>
+        <div class="button-desktop" id="btnContinue" style="order: 1; text-align: center; width: 100px;">
+            <span class="button-text-inner-desktop btn-default" style="width: 63px;">Continue</span>
+        </div>
+        <div class="button-desktop" id="btnEndCall" style="order: 2; text-align: center; width: 100px;">
+            <span class="button-text-inner-desktop" style="width: 60px;">End Call</span>
+        </div>
+    </div>
+
+</body>
+</html>

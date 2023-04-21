@@ -1,0 +1,3309 @@
+﻿body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customer {
+    font-size: 20px;
+    color: blue;
+    font-weight: bold;
+    font-family: Sans-Serif;
+}
+
+.csr {
+    font-size: 20px;
+    color: Black;
+    font-weight: normal;
+    font-family: Sans-Serif;
+}
+
+.normal {
+    font-size: 20px;
+    color: Black;
+    font-family: Sans-Serif;
+}
+
+.status {
+    font-size: 20px;
+    color: Black;
+    font-family: Sans-Serif;
+}
+
+.body-wrapper {
+    /* Landing Page - Desktop 1400 - 1200 content space */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px 296px;
+    position: relative;
+    width: 1440px;
+    height: 800px;
+    background: #FFFFFF;
+    font-family: 'Lato';
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.body-content {
+    /* Destop frame */
+    display: flex;
+    flex-direction: column;
+    width: 1440px;
+    overflow-y: auto;
+    /*    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+*/ /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.header-desktop {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    position: absolute;
+    width: 1200px;
+    height: 81px;
+    left: 120px;
+    top: 0px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.25);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.header-desktop-inner {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 1200px;
+    height: 80px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.header-desktop-main {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 24px;
+    width: 1200px;
+    height: 80px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.header-desktop-logo-outer {
+    width: 252.5px;
+    height: 50px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.header-desktop-logo-inner {
+    position: absolute;
+    width: 212.24px;
+    height: 50px;
+    left: 0px;
+    top: calc(50% - 50px/2);
+}
+
+.header-desktop-logo {
+    position: absolute;
+    left: 0%;
+    right: 27%;
+    top: 0%;
+    bottom: -4%;
+    background-image: url('images/evstar_dark_logo_transparent_tiny.png');
+}
+
+.header-desktop-logo:hover {
+    cursor: pointer;
+}
+
+.header-desktop-frame {
+    /* Frame 506351 */
+
+
+    width: 502px;
+    height: 50px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.header-desktop-link1 {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 116px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.header-desktop-link2 {
+    /* FAQs */
+
+
+    width: 39px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.header-desktop-link-text {
+    /* What’s covered? */
+
+
+    width: 116px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.header-button {
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 20px;
+    width: 173px;
+    height: 52px;
+    background: #FFFFFF;
+    border: 2px solid #489A2E;
+    border-radius: 14px;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.header-button-icon {
+    width: 24px;
+    height: 24px;
+    line-height: 100%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #489A2E;
+}
+
+.header-button-content {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0px 10px;
+    width: 123px;
+    height: 24px;
+    color: #489A2E;
+}
+
+.hero-desktop {
+    position: absolute;
+    width: 1200px;
+    height: 810px;
+    left: 120px;
+    top: 81px;
+    background: #F5F5F5;
+    border-radius: 10px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.top-box-desktop {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    border-radius: 10px;
+    gap: 6px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    background: #F5F5F5;
+    flex-direction: row;
+    align-items: flex-start;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.bottom-box-desktop {
+    width: 1160px;
+    height: 260px;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #FFFFFF;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.left-box-desktop {
+    /* Left */
+    /* Auto layout */
+    /*    position: absolute;*/
+    display: flex;
+    gap: 24px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 694px;
+    height: 490px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.right-box-desktop {
+    /* right */
+    /* Auto layout */
+
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 450px;
+    height: 490px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    background: #FFFFFF;
+}
+
+.hi-textbox-desktop {
+    /* Hi. How can we help you? */
+
+
+    position: absolute;
+    width: 324px;
+    height: 130px;
+    /*    left: 0px;
+*/  top: 81px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 42px;
+    /* or 105% */
+
+    color: #000000;
+}
+
+.register-button-desktop {
+    /* 🟢 Button */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 20px;
+    position: absolute;
+    width: 208px;
+    height: 52px;
+    /*    left: 0px;
+*/ top: 219px;
+    background: #489A2E;
+    border-radius: 14px;
+}
+
+.register-button-content-desktop {
+    /*  */
+
+
+    width: 24px;
+    height: 24px;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    flex-direction: row;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.register-button-text-desktop {
+    /* Text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 154px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.register-text-desktop {
+    /* Register a product */
+
+
+    width: 138px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.file-button-desktop {
+    /* 🟢 Button */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 20px;
+    position: absolute;
+    width: 134px;
+    height: 52px;
+    left: 278px;
+    top: 219px;
+    background: #FFFFFF;
+    border: 2px solid #489A2E;
+    border-radius: 14px;
+}
+
+.file-button-content-desktop {
+    /* Content */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    width: 94px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.file-button-text-desktop {
+    /* Text */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 94px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.file-text-desktop {
+    /* File a claim */
+
+
+    width: 78px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.reg-code-link-desktop {
+    /* File a claim */
+
+
+    width: 78px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.reg-code-link-inner-desktop {
+    /* 🟢 Link */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 2px;
+    width: 193px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.reg-code-link-placeholder-desktop {
+    /* 🟢 .icon-placeholder */
+
+
+    width: 14px;
+    height: 14px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.reg-code-link-icon-desktop {
+    /*  */
+    /*    position: absolute;
+*/ left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 100%;
+    /* or 13px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FB8C26;
+}
+
+.reg-code-link-text-desktop {
+    /* I have a registration code */
+
+
+    width: 177px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+}
+
+.body-text-block-desktop {
+    /* Body Text Block */
+
+
+    position: absolute;
+    width: 1200px;
+    height: 126px;
+    top: 391px;
+    text-align: center;
+}
+
+.sub-body-desktop {
+    /* Sub body text */
+
+
+    position: absolute;
+    width: 1200px;
+    height: 26px;
+    left: 0px;
+    top: 53px;
+    background: #FFFFFF;
+    /*    display: flex;
+*/ align-items: center;
+    text-align: center;
+}
+
+.sub-body-text-desktop {
+    /* Here’s what you can expect. */
+
+
+    position: absolute;
+    width: 1200px;
+    height: 26px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 20px;
+    line-height: 32px;
+    /* or 210% */
+    /*    display: flex;
+*/ align-items: center;
+    text-align: center;
+    color: #747474;
+}
+
+.head-body-desktop {
+    /* Head body text */
+
+
+    position: absolute;
+    width: 1200px;
+    height: 64px;
+    left: 0px;
+    top: 8px;
+    background: #FFFFFF;
+    align-items: center;
+    text-align: center;
+}
+
+.head-body-text-desktop {
+    /* We offer the protection you can trust */
+
+
+    position: absolute;
+    width: 1200px;
+    height: 64px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
+    /* or 131% */
+    /*    display: flex;
+*/ align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.callout-desktop {
+    /* Callout boxes */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 24px 24px;
+    gap: 24px;
+    position: absolute;
+    width: 1200px;
+    height: 278px;
+    left: 0px;
+    top: 500px;
+    background: #FFFFFF;
+}
+
+.callout1-desktop {
+    /* 🟢 Callout */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+    gap: 10px;
+    width: 270px;
+    height: 246px;
+    background: #F5F5F5;
+    border: 2px solid #489A2E;
+    border-radius: 30px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.callout-header-text-desktop {
+    /* Callout header text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 238px;
+    height: 52px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+.callout-header-icr-desktop {
+    /* 🟢 ICR_placeholder */
+
+
+    width: 50px;
+    height: 50px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.callout-header-icon-desktop {
+    /*  */
+
+
+    position: relative;
+    left: 8px;
+    /*    right: 26%;
+*/ top: 8px;
+    /*    bottom: 24%;
+*/ font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 100%;
+    /* or 36px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+}
+
+.callout-header-frame-desktop {
+    /* Frame 506344 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 177px;
+    height: 52px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.callout-header-ftext-desktop {
+    /* Set Up Your Account */
+
+
+    width: 180px;
+    height: 52px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    vertical-align: middle;
+    color: #000000;
+    /* Inside auto layout */
+}
+
+.callout2-desktop {
+    /* 🟢 Callout */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+    gap: 10px;
+    width: 270px;
+    height: 246px;
+    background: #F5F5F5;
+    border: 2px solid #489A2E;
+    border-radius: 30px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.callout2-header-ftext-desktop {
+    /* Start a Claim */
+
+
+    width: 180px;
+    height: 47px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    /* or 26px */
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.callout3-desktop {
+    /* 🟢 Callout */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+    gap: 10px;
+    width: 270px;
+    height: 246px;
+    background: #F5F5F5;
+    border: 2px solid #489A2E;
+    border-radius: 30px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.callout4-desktop {
+    /* 🟢 Callout */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px;
+    gap: 10px;
+    width: 270px;
+    height: 246px;
+    background: #F5F5F5;
+    border: 2px solid #489A2E;
+    border-radius: 30px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.callout-text-desktop {
+    width: 235px;
+    height: 147px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.pinstripe {
+    position: absolute;
+    width: 1200px;
+    height: 1px;
+    /*    left: 120px;
+*/ top: 780px;
+    background: #D5D6DA;
+}
+
+.bottom-text-body-desktop {
+    position: absolute;
+    width: 1200px;
+    height: 56px;
+    left: 120px;
+    top: 781px;
+}
+
+.bottom-text-desktop {
+    position: absolute;
+    width: 145px;
+    height: 24px;
+    left: 360px;
+    top: 16px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 42px;
+    /* or 210% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+.bottom-link-body-desktop {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 2px;
+    position: absolute;
+    width: 106px;
+    height: 24px;
+    left: 505px;
+    top: 16px;
+}
+
+.bottom-link-desktop {
+    /* 🟢 Link */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 2px;
+    width: 106px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.bottom-link-text-desktop {
+    /* View our FAQs */
+
+
+    width: 106px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+}
+
+.login-block-desktop {
+    /* Device detail block */
+
+    position: absolute;
+    width: 1200px;
+    height: 538px;
+    left: 120px;
+    top: 131px;
+    background: #FFFFFF;
+/*    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+*/    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.login-panel-desktop {
+    /* Dashboard block */
+    position: absolute;
+    width: 543px;
+    height: 524px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.login-content-desktop {
+    /* Prduct Content Block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 24px;
+    position: absolute;
+    width: 543px;
+    height: 574px;
+    left: 0px;
+    top: 0px;
+}
+
+.login-content-highlights-desktop {
+    /* Highlights */
+
+
+    width: 495px;
+    height: 85px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 38px */
+
+
+    color: #000000;
+}
+
+.login-content-text-field1-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 690px;
+    height: 103px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.login-content-text-field2-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 690px;
+    height: 103px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.login-text-input-label-desktop {
+    /* This is input label */
+
+
+    width: 690px;
+    height: 21px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+    /* identical to box height, or 21px */
+
+
+    color: #000000;
+}
+
+.login-text-input-desktop {
+    /* Input and modifiers */
+
+
+    width: 690px;
+    height: 46px;
+    border: 1px solid #A5AAAF;
+    border-radius: 12px;
+    font-size: 20px;
+    padding: 6px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.helper-text-box-desktop {
+    /* Helper text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 12px;
+    width: 690px;
+    height: 18px;
+    top: 100px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.helper-text-desktop {
+    /* Helper text */
+
+
+    width: 690px;
+    height: 18px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    /* or 18px */
+
+
+    color: #718382;
+}
+
+.login-button-row-desktop {
+    display: flex;
+    width: 690px;
+    height: 52px;
+    background: #FFFFFF;
+    flex-direction: row;
+    gap: 191px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.button-back-desktop {
+    /* 🟢 Button */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 10px;
+    /*    position: absolute;
+*/ width: 90px;
+/*    height: 52px;
+*/    /*    left: 0px;
+    top: 0px;
+*/ background: #FFFFFF;
+    border: 2px solid #489A2E;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.button-back-text-desktop {
+    /* Text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 50px;
+    height: 24px;
+    color: #489A2E;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.button-back-text-inner-desktop {
+    /* Back */
+
+
+    width: 34px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+}
+
+.button-desktop {
+    /* 🟢 Button */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 10px;
+    /*    position: absolute;
+*/ width: 94px;
+/*    height: 52px;
+*/    /*    left: 285px;
+    top: 0px;
+*/ background: #489A2E;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.button-text-desktop {
+    /* Text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 54px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.button-text-inner-desktop {
+    /* Login */
+
+
+    width: 38px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.my-plan-block-desktop {
+    /* My plan block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 50px;
+    gap: 25px;
+    width: 1200px;
+    height: 50px;
+    position: absolute;
+    top: 700px;
+    left: 120px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.my-plan-block-desktop2 {
+    /* My plan block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 50px;
+    gap: 25px;
+    width: 1200px;
+    height: 50px;
+    position: absolute;
+    top: 970px;
+    left: 120px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.my-plan-pinstripe-desktop {
+    /* Pinstrip */
+
+
+    width: 1094px;
+    height: 1px;
+    background: #D5D6DA;
+    opacity: 0.5;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.my-plan-line-desktop {
+    /* My plan line */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 515px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.my-plan-main-desktop {
+    /* My plan line */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 76px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.my-plan-text-desktop {
+    /* My plan: */
+
+
+    width: 76px;
+    height: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    /* identical to box height, or 100% */
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.my-plan-con-home-desktop {
+    /* Connected Home protection */
+
+
+    width: 236px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    /* or 167% */
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #333F48;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+.verify-block-desktop {
+    /* Device detail block */
+
+    position: absolute;
+    width: 1200px;
+    height: 538px;
+    left: 120px;
+    top: 121px;
+    background: #FFFFFF;
+/*    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+*/    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.verify-panel-desktop {
+    /* Dashboard block */
+
+
+    position: absolute;
+    width: 695px;
+    height: 524px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+}
+
+.verify-content-desktop {
+    /* Prduct Content Block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 24px;
+    position: absolute;
+    width: 897px;
+    height: 560px;
+    left: 0px;
+    top: 0px;
+}
+
+.verify-content-highlights-desktop {
+    /* Highlights */
+
+
+    width: 645px;
+    height: 92px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 38px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.verify-content-text-field1-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.verify-content-text-field2-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.verify-content-rb1-desktop {
+    /* 🟢 Radio Button
+
+Default Selected State
+*/
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 8px;
+    width: 380px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.verify-content-rb2-desktop {
+    /* 🟢 Radio Button
+
+Default/Resting state
+*/
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 8px;
+    width: 380px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.verify-content-rb-desktop {
+    /* radio - selected */
+
+
+    box-sizing: border-box;
+    width: 22px;
+    height: 22px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 99px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.verify-content-rb-text-desktop {
+    /* Text */
+
+
+    width: 127px;
+    height: 22px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 135%;
+    /* identical to box height, or 22px */
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.verify-spacer-desktop {
+    /* Spacer */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1px 0px;
+    gap: 8px;
+    width: 380px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.verify-button-row-desktop {
+    display: flex;
+    width: 380px;
+    height: 52px;
+    background: #FFFFFF;
+    flex-direction: row;
+    gap: 170px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.verify-button-desktop {
+    /* 🟢 Button */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 20px;
+    gap: 10px;
+/*    position: absolute;
+*/    width: 121px;
+    height: 52px;
+    left: 259px;
+    top: 0px;
+    background: #489A2E;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.verify-button-text-desktop {
+    /* Text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 81px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.verify-button-text-inner-desktop {
+    /* Continue */
+
+
+    width: 65px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.verify-wait-row-desktop {
+    display: flex;
+    background: #FFFFFF;
+    flex-direction: row;
+    text-align:center;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+
+.verify-code-link-desktop {
+    /* File a claim */
+
+
+    width: 2138px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.verify-code-link-inner-desktop {
+    /* 🟢 Link */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 2px;
+    width: 213px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.verify-code-link-placeholder-desktop {
+    /* 🟢 .icon-placeholder */
+
+
+    width: 14px;
+    height: 14px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+.verify-code-link-text-desktop {
+    /* I have a registration code */
+
+
+    width: 213px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+}
+
+.landing-content-block {
+    /* Dashboard content block */
+
+    position:absolute;
+    top:121px;
+    left:120px;
+    width: 1200px;
+    height: 623px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.landing-product-block {
+    /* Product Block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 24px;
+    position: absolute;
+    width: 1061px;
+    height: 623px;
+    left: 0px;
+    top: 0px;
+}
+
+.landing-product-personalization {
+    /* Personalization */
+/*    position: absolute;
+    top: 50px;
+    left: 50px;
+*/    width: 495px;
+    height: 51px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.landing-product-personalization-header {
+    /* Header text block */
+
+
+/*    position: absolute;
+    width: 390px;
+    height: 85px;
+    left: 0px;
+    top: -29px;
+*/}
+
+.landing-product-personalization-text {
+    /* Hi, Tiffin */
+
+
+/*    position: absolute;
+*/    width: 382px;
+    height: 54px;
+/*    left: 0px;
+    top: 31px;
+*/    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 42px;
+    /* or 105% */
+
+
+    color: #000000;
+}
+
+.landing-product-message-block {
+    /* Product message and block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 1011px;
+    height: 765px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.landing-product-dev-total {
+    /* Sub personalization - Device total */
+
+    display: flex;
+    gap: 16px;
+    flex-direction:column;
+    width: 425px;
+    height: 83px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.landing-product-dev-total-text {
+    /* You have 5 registered devices.
+Select a device to continue */
+
+
+/*    position: absolute;
+*/    width: 390px;
+/*    left: 0px;
+    top: 0px;
+*/    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+/*    line-height: 36px;
+*/    /* or 180% */
+
+    flex: none;
+    order: 0;
+    color: #000000;
+}
+
+.landing-product-dev-total-text2 {
+    /* You have 5 registered devices.
+Select a device to continue */
+    /*    position: absolute;
+*/ width: 390px;
+    /*    left: 0px;
+    top: 0px;
+*/ font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    /* or 180% */
+
+    flex: none;
+    order: 1;
+    color: #000000;
+}
+
+.product-widget {
+    /* 🟢 Product widget */
+
+
+    width: 183px;
+    height: 175px;
+    border-radius: 40px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.product-widget-selectable {
+    /* Selectable widget */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    margin: 10px;
+    gap: 10px;
+    /*    position: absolute;
+*/ width: 183px;
+    height: 175px;
+    /*    left: 0px;
+    top: 0px;
+*/ background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 40px;
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+}
+
+    .product-widget-selectable:hover {
+        border: 3px solid #333F48;
+    }
+
+.product-widget-icon {
+    /* life-ring 1 */
+
+    height: 50px;
+    width: 50px;
+    margin-top: 46px;
+}
+
+.product-widget-dev-text {
+    /* Text */
+
+
+/*    position: absolute;
+*/    width: 149px;
+/*    height: 55px;
+    left: 16px;
+    top: 108px;
+*/    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+/*    line-height: 130%;
+*/    /* or 18px */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #489A2E;
+}
+
+.add-product-widget {
+    /* 🟢 Product widget */
+
+
+    width: 183px;
+    height: 175px;
+    border-radius: 40px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.add-product-widget-selectable {
+    /* Selectable widget */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    margin: 10px;
+    gap: 10px;
+    /*    position: absolute;
+*/ width: 183px;
+    height: 175px;
+    /*    left: 0px;
+    top: 0px;
+*/ background: #FFFFFF;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.add-product-button {
+    /* 🟢 Button */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 15px;
+    width: 52px;
+    height: 52px;
+    background: #FFFFFF;
+    border: 2px solid #FB8C26;
+    border-radius: 9999px;
+    margin-top: 46px;
+}
+
+.add-product-button-text {
+    /* + */
+
+
+    width: 24px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+/*    padding-left: 1px;
+    padding-bottom: 3px;
+*/    /* or 32px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FB8C26;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#divProducts {
+    height: 705px;
+    width: 1125px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.divProductsInner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.device-category-block-desktop {
+    /* Product message and block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0px;
+    gap: 16px;
+    width: 1011px;
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+    order: 0;
+}
+
+.device-category-name-desktop {
+    /* Sub personalization - Device total */
+
+
+    width: 390px;
+    height: 42px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.device-category-text-desktop {
+    /* Mobile phone */
+
+
+/*    position: absolute;
+*/    width: 390px;
+    height: 49px;
+/*    left: 0px;
+    top: -7px;
+*/    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    /* or 180% */
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+
+.newprod-block-desktop {
+    /* Device detail block */
+
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    width: 1200px;
+    height: 716px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.newprod-panel-desktop {
+    /* Dashboard block */
+    /* Auto layout */
+
+    position: absolute;
+    top: 121px;
+    left: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 543px;
+    height: 900px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.newprod-frame-506346-desktop {
+    /* Frame 506346 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 26px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.newprod-frame-506344-desktop {
+    /* Frame 506344 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 26px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.newprod-callout-dark-desktop {
+    /* 🟢 Callout - Dark device and service fee */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    position: absolute;
+    width: 380px;
+    height: 119px;
+    left: 0px;
+    top: 42px;
+    background: #718382;
+    border-radius: 8px;
+}
+
+.newprod-callout-fee-text-desktop {
+    /* Device type / Service fee */
+
+
+    width: 348px;
+    height: 26px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    /* identical to box height, or 26px */
+
+
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.newprod-content-desktop {
+    /* Prduct Content Block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 24px;
+    position: absolute;
+    width: 1000px;
+    height: 730px;
+    left: 0px;
+    top: 0px;
+}
+
+.newprod-content-highlights-desktop {
+    /* Highlights */
+
+
+    width: 645px;
+    height: 52px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+    /* or 38px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.newprod-frame-506353-desktop {
+    /* Frame 506353 */
+
+
+    position: absolute;
+    width: 380px;
+    height: 204px;
+    left: 543px;
+    top: 94px;
+    background: #FFFFFF;
+}
+
+.newprod-frame-506353-2-desktop {
+    /* Frame 506353 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 9px 0px 16px;
+    gap: 16px;
+    width: 348px;
+    height: 45px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.newprod-content-text-field1-desktop {
+    /* Smart watch */
+
+
+    width: 100%;
+    height: 45px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.newprod-content-text-field2-desktop {
+    /* $XX */
+
+
+    width: 56px;
+    height: 45px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.newprod-text-field1-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.newprod-text-field2-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.newprod-text-field3-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.newprod-text-field4-desktop {
+    /* 🟢 Text Field */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 103px;
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+}
+
+.newprod-button-row-desktop {
+    display: flex;
+    width: 380px;
+    height: 52px;
+    background: #FFFFFF;
+    flex-direction: row;
+    gap: 160px;
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+}
+
+
+.save-button-desktop {
+    /* 🟢 Button */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 20px;
+    gap: 10px;
+    /*    position: absolute;
+*/ width: 131px;
+    height: 52px;
+    left: 259px;
+    top: 0px;
+    background: #489A2E;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.save-button-text-desktop {
+    /* Text */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 8px;
+    width: 101px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.save-button-text-inner-desktop {
+    /* Continue */
+
+
+    width: 85px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.green-alert-banner-desktop {
+    /* 🟢 Alert Banner
+
+Ellipse after 12 characters
+*/
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 16px;
+    position: absolute;
+    width: 1200px;
+    height: 48px;
+    left: 120px;
+    top: 81px;
+    background: #C8EE42;
+}
+
+.banner-success-message-desktop {
+    /* Success message for desktop */
+
+
+    width: 1128px;
+    height: 21px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* identical to box height, or 21px */
+
+    display: flex;
+    align-items: center;
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.banner-close-desktop {
+    /* close2
+
+close, exit, x, collapse, modal, delete, cancel
+*/
+
+    width: 24px;
+    height: 30px;
+    text-align:right;
+    vertical-align: top;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/*.banner-close-icon {*/
+    /* Union */
+
+
+    /*position: relative;
+    width: 16px;
+    height: 16px;
+    right: 0px;
+    top: 0px;
+}*/
+
+.frame-506349-desktop {
+    /* Frame 506349 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 571px;
+    height: 214px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.action-product-block-desktop {
+    /* Product Block */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 587px;
+    height: 214px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-device-info-desktop {
+    /* 🟢 Link */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 173px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+}
+
+.action-frame-506346-desktop {
+    /* Frame 506346 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 26px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.action-frame-506344-desktop {
+    /* Frame 506344 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 26px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.action-frame-506344-text-desktop {
+    /* Device type / Service fee */
+
+
+    width: 348px;
+    height: 26px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    /* identical to box height, or 26px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-frame-506347-desktop {
+    /* Frame 506347 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 23px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.action-frame-506348-desktop {
+    /* Frame 506348 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 23px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.action-frame-506349-desktop {
+    /* Frame 506349 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 23px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.action-frame-506350-desktop {
+    /* Frame 506350 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 348px;
+    height: 23px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 4;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.action-device-type-desktop {
+    /* Device type / Service fee */
+
+
+    width: 348px;
+    height: 26px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    /* identical to box height, or 26px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-device-values-desktop {
+    width: 348px;
+    height: 23px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 130%;
+
+
+    color: #000000;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-device-date-desktop {
+    /* Added dd/mm/yyyy */
+
+
+    width: 348px;
+    height: 23px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    /* or 23px */
+
+
+    color: #000000;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-frame-506353-desktop {
+    /* Frame 506353 */
+
+
+    position: absolute;
+    width: 380px;
+    height: auto;
+    left: 665px;
+    top: 69px;
+    background: #FFFFFF;
+}
+
+.action-frame-link-desktop {
+    /* 🟢 Link */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 173px;
+    height: 24px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+}
+
+.action-frame-link-text-desktop {
+    /* Link */
+
+
+    width: 173px;
+    height: 24px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FB8C26;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.action-callout-dark-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    position: absolute;
+    width: 380px;
+    height: auto;
+    left: 0px;
+    top: 42px;
+    background: #718382;
+    border-radius: 8px;
+}
+
+.action-frame-claims-desktop {
+    /* Frame 506353 */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 9px 0px 16px;
+    gap: 16px;
+    width: 348px;
+    height: auto;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.dropdown-header-desktop {
+    /* .Dropdown header */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 380px;
+    height: 56px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.dropdown-container-desktop {
+    /* Container */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 380px;
+    height: 56px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.dropdown-input-desktop {
+    /* Input and modifiers */
+
+
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 380px;
+    height: 56px;
+    background: #FFFFFF;
+    border: 2px solid #A5AAAF;
+    border-radius: 12px;
+    padding: 12px 0px 12px 12px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.textarea-input-desktop {
+    /* Input and modifiers */
+
+
+    box-sizing: border-box;
+    width: 380px;
+    height: 160px;
+    background: #FFFFFF;
+    border: 1px solid #A5AAAF;
+    border-radius: 8px;
+    padding: 12px 0px 12px 12px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+/* Footer - Desktop */
+.footer-desktop {
+    position: absolute;
+    width: 1200px;
+    height: 70px;
+    left: 120px;
+    top: 945px;
+    background: #718382;
+}
+
+
+/* Footer - Desktop */
+.footer-desktop-login2 {
+    position: absolute;
+    width: 1200px;
+    height: 70px;
+    left: 120px;
+    top: 1045px;
+    background: #718382;
+}
+
+/* Footer - Desktop */
+.footer-desktop-login {
+    position: absolute;
+    width: 1200px;
+    height: 70px;
+    left: 120px;
+    top: 785px;
+    background: #718382;
+}
+
+.footer-logo-desktop {
+    position: absolute;
+    width: 105.44px;
+    height: 36px;
+    left: 16px;
+    top: 18px;
+}
+
+.footer-copyright {
+    position: absolute;
+    width: 324px;
+    height: 23px;
+    left: 860px;
+    top: 26px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    /* or 167% */
+
+    align-items: center;
+    text-align: right;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.button {
+    box-sizing: border-box;
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 20px;
+    width: 163px;
+    height: 52px;
+    background: #FFFFFF;
+    border: 2px solid #489A2E;
+    border-radius: 14px;
+    float: right;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 380px;
+}
+
+option {
+    font-family: 'Lato';
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+
+a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+    a:hover {
+        color: blue;
+        text-decoration: underline;
+    }
+
+.lnk {
+    cursor: pointer;
+}
+
+    .lnk:hover {
+        color: blue;
+    }
+
+.btn {
+}
+
+    .btn:hover {
+        cursor: pointer;
+    }
+/*
+    .btn:active, .btn:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .btn.btn-primary {
+        background: #ff2e63;
+        border-color: #ff2e63;
+    }
+
+        .btn.btn-primary:hover {
+            border-color: #ff4272;
+            background: #ff4272;
+        }
+
+    .btn.btn-black {
+        background: #000000;
+        color: #ffffff;
+    }
+
+        .btn.btn-black:hover {
+            border-color: #000000;
+            background: transparent;
+            color: #000000;
+        }
+
+    .btn.btn-green {
+        background: #8dc63f;
+        color: #ffffff;
+    }
+
+        .btn.btn-green:hover {
+            border-color: #8dc63f;
+            background: transparent;
+            color: #8dc63f;
+        }
+
+    .btn.btn-red {
+        background: #ca1414;
+        color: #ffffff;
+    }
+
+        .btn.btn-red:hover {
+            border-color: #ff0109;
+            background: transparent;
+            color: #ca1414;
+        }
+
+    .btn.btn-purple {
+        background: #5769b1;
+        color: #ffffff;
+    }
+
+        .btn.btn-purple:hover {
+            border-color: #8dc63f;
+            background: transparent;
+            color: #8dc63f;
+        }
+
+    .btn.btn-secondary {
+        background: #000000;
+        border-color: #000000;
+    }
+
+        .btn.btn-secondary:hover {
+            background: #0a0a0a;
+            border-color: #0a0a0a;
+        }
+*/
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .body-content {
+        padding: 0;
+    }
+}
+
+#top-menu li a {
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: none;
+    color: black;
+}
+
+[data-tooltip]:before {
+    /* needed - do not touch */
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    /* customizable */
+    transition: all 0.15s ease;
+    padding: 10px;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px silver;
+}
+
+[data-tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+    /* customizable */
+    background: #8dc63f;
+    margin-top: -50px;
+    margin-left: 120px;
+}
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
+}

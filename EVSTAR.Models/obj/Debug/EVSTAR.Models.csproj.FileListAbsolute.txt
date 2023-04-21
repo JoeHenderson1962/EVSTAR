@@ -1,0 +1,9 @@
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\bin\Debug\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\bin\Debug\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\obj\Debug\EVSTAR.Models.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\obj\Debug\EVSTAR.Models.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\obj\Debug\EVSTAR.Models.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\obj\Debug\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\EVSTAR.Models\obj\Debug\Techcycle.Models.pdb

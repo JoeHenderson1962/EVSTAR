@@ -1,0 +1,83 @@
+.datepicker {
+    position: relative;
+}
+.calender {
+    box-sizing: border-box;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #eee;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, sans-serif;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 6px;
+    padding: 8px;
+    background-color: white;
+}
+
+.calender > .sp-cal-title {
+    padding-bottom: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.calender > .sp-cal-title > a {
+    cursor: pointer;
+    user-select: none;
+}
+.calender > .sp-cal-days {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat( 7, 1fr);
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    background-color: white;
+}
+
+.calender > .sp-cal-days > a {
+    width: 25px;
+    height: 25px;
+    padding: 3px 3px 3px 3px;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 6px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    cursor: pointer;
+}
+.calender > .sp-cal-days > a:hover {
+    background-color: #bbdefb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.calender > .sp-cal-label-days {
+    height: 16px;
+    font-size: 12px;
+    font-weight: bolder;
+    display: grid;
+    grid-template-columns: repeat( 7, 1fr);
+    justify-content: center;
+    align-items: center;
+    color:#2979ff;
+}
+
+.calender > .sp-cal-label-days > span {
+    justify-self: center;
+    align-self: center;
+}
+
+.calender > .sp-cal-label-days > span:nth-child(1) {
+    color: rgb(252, 67, 67);
+}
+.sp-cal-today {
+    color: #333;
+}

@@ -1,0 +1,3 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\EVSTAR.Invoice.Import\obj\Release\EVSTAR.Invoice.Import.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\EVSTAR.Invoice.Import\obj\Release\EVSTAR.Invoice.Import.csproj.SuggestedBindingRedirects.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\EVSTAR.Invoice.Import\obj\Release\EVSTAR.Invoice.Import.csproj.CoreCompileInputs.cache

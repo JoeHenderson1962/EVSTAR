@@ -1,0 +1,9 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\bin\Release\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\bin\Release\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\bin\Release\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\bin\Release\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\obj\Release\Techcycle.Models.v2.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\obj\Release\Techcycle.Models.v2.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\obj\Release\Techcycle.Models.v2.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\obj\Release\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.Models.v2\obj\Release\Techcycle.Models.pdb

@@ -1,0 +1,167 @@
+@import "dialog-variables";
+
+.transition(@transition) {
+	-moz-transition: @transition;
+	-webkit-transition: @transition;
+	transition: @transition;
+}
+
+.gradient-vertical-2(@color1, @color2, @stop1: 0%, @stop2: 100%) {
+	background-color: mix(@color1, @color2, 50%);
+	background-image: -moz-linear-gradient(top, @color1 @stop1, @color2 @stop2);
+	background-image: -webkit-linear-gradient(top, @color1 @stop1, @color2 @stop2);
+	background-image: linear-gradient(to bottom, @color1 @stop1, @color2 @stop2);
+}
+
+.box-sizing(@value) {
+	-moz-box-sizing: @value;
+	-webkit-box-sizing: @value;
+	box-sizing: @value;
+}
+
+body.dialog-no-scroll {
+	overflow: hidden;
+}
+
+.dialog-mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: @dialogZIndex;
+	background-color: fade(@dialogMaskColor, 0);
+	&.dialog-mask-transition {
+		.transition(background-color 200ms);
+	}
+	&.dialog-mask-active {
+		background-color: fade(@dialogMaskColor, 50);
+	}
+	&.dialog-mask-loading {
+		&:after {
+			@height: 16px;
+			@width: 107px;
+			position: absolute;
+			display: block;
+			content: "";
+			background-image: url("./loading.gif");
+			top: 50%;
+			left: 50%;
+			width: @width;
+			height: @height;
+			margin-left: -@width;
+			margin-top: -@height;
+		}
+	}
+}
+
+.dialog-scroll-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: @dialogZIndex;
+	overflow: auto;
+	.dialog-container {
+		position: absolute;
+	}
+}
+
+.dialog-container {
+	z-index: @dialogZIndex;
+	position: fixed;
+	min-height: @dialogHeight;
+	min-width: @dialogWidth;
+	.gradient-vertical-2(@dialogBgColor, darken(@dialogBgColor, 10%), 85%);
+	color: @dialogColor;
+
+	&.dynamic {
+		top: 50%;
+		left: 50%;
+	}
+
+	border: 1px solid @dialogBorderColor;
+	box-shadow: 5px 5px 10px fade(black, 50);
+	border-radius: @dialogRadius;
+
+	.dialog-header {
+		.gradient-vertical-2(@dialogHeaderBgColor, darken(@dialogHeaderBgColor, 10%));
+		border-top-left-radius: @dialogRadius;
+		border-top-right-radius: @dialogRadius;
+		position: relative;
+		color: @dialogHeaderColor;
+		min-height: 19px;
+		.dialog-title {
+			font-weight: bold;
+		}
+		.dialog-close {
+			@length: 20px;
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			cursor: pointer;
+			width: @length;
+			height: @length;
+			line-height: @length;
+			text-align: center;
+			border-radius: @dialogRadius;
+
+			&:hover {
+				.gradient-vertical-2(@dialogHeaderColor, darken(@dialogHeaderColor, 20%));
+				color: @dialogHeaderBgColor;
+			}
+			&:focus, &:active {
+				.gradient-vertical-2(darken(@dialogHeaderColor, 20%), @dialogHeaderColor);
+			}
+		}
+	}
+
+	.dialog-header, .dialog-footer {
+		padding: @dialogPadding / 2;
+	}
+
+	.dialog-body {
+		padding: @dialogPadding;
+		margin-bottom: 41px;
+		p {
+			margin-top: 0;
+		}
+	}
+
+	.dialog-footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		.box-sizing(border-box);
+		min-height: 41px;
+
+		.dialog-button {
+			float: right;
+		}
+	}
+
+	.dialog-button {
+		text-align: center;
+		padding: @dialogPadding / 2 @dialogPadding;
+		border-radius: @dialogRadius;
+		cursor: pointer;
+		.transition(all 200ms);
+		box-shadow: inset 0 -15px 10px fade(black, 25);
+		border: 1px solid @dialogPrimaryButtonBgColor;
+		.gradient-vertical-2(@dialogPrimaryButtonBgColor, darken(@dialogPrimaryButtonBgColor, 10%));
+		color: @dialogHeaderColor;
+		font-size: 14px;
+		&:hover {
+			box-shadow: none;
+		}
+		&:active, &:focus {
+			.gradient-vertical-2(darken(@dialogPrimaryButtonBgColor, 10%), @dialogPrimaryButtonBgColor);
+		}
+
+		&.dialog-button + .dialog-button {
+			margin-right: 5px;
+		}
+	}
+}

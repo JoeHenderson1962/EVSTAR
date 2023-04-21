@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "7k/VsL+Ve9RwKoXC0Xafip6k4/+a0WFc3GStJeNHmqs0yvvAW7y1sq04v2uRDVFzJ0KnQl9J8idY7qL7WsjsvA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jhend\\source\\repos\\TCS\\EVSTAR\\EVSTAR\\EVSTAR.api\\EVSTAR.api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jhend\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\jhend\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

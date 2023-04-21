@@ -1,0 +1,64 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="Techcycle.Web.Site_Mobile" %>
+
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="container body-content" style="font-family: 'Lato'; font-weight: normal;">
+            <div class="navbar" style="width: 960px; margin: 0 auto; padding-left: 0; text-align: left; align-content: start; left: -80px;">
+                <a href="Default.aspx"><img src="./Content/images/EVSTAR dark_logo_transparent png" alt="EVStar" id="logo" /></a>
+                <div style="float: right;">
+                    <ul class="nav" id="top-menu">
+                        <li id="liCoverage" style="margin-right: 20px; text-transform: lowercase;"><a href="WhatsCovered.aspx">What's Covered?</a></li>
+                        <li id="liFAQ" style="margin-right: 20px; text-transform: lowercase;"><a href="FAQ.aspx">FAQ</a></li>
+                        <li id="liLogin" style="margin-right: 20px; text-transform: lowercase;"><a id="lnkLogin" href="Login.aspx">Login</a></li>
+                        <li id="liFileClaim" style="margin-right: 20px; text-transform: lowercase; display:none;"><a id="lnkFileClaim" href="StartClaim.aspx">Login</a></li>
+                        <li id="liRegister" style="text-transform: lowercase;"><a id="lnkRegister" href="Register.aspx">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert-danger" style="text-align: center; margin-bottom: 20px; display: none;" id="divError">
+                <label id="lblError"></label>
+            </div>
+            <div id="dialog" title="" style="text-align: center; align-content: center;">
+                <p>
+                    <label id="lblDialog"></label>
+                </p>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Techcycle Solutions</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
