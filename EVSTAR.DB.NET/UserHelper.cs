@@ -65,13 +65,13 @@ namespace EVSTAR.DB.NET
                                 result.Add(user);
                                 if (user.ClientID > 0)
                                 {
-                                    List<Client> clients = clientHelper.Select(user.ClientID, out errorMsg);
+                                    List<Client> clients = clientHelper.Select(user.ClientID, clientCode, out errorMsg);
                                     if (clients != null && clients.Count > 0)
                                         user.ParentClient = clients[0];
                                 }
                                 if (user.AddressID > 0)
                                 {
-                                    List<Address> addresses = addressHelper.Select(user.AddressID, out errorMsg);
+                                    List<Address> addresses = addressHelper.Select(user.AddressID, clientCode, out errorMsg);
                                     if (addresses != null && addresses.Count > 0)
                                         user.UserAddress = addresses[0];
                                 }
@@ -115,7 +115,7 @@ namespace EVSTAR.DB.NET
                     if (user.Reset)
                         user.Authentication = "ChangeYourPassword";
 
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -197,7 +197,7 @@ namespace EVSTAR.DB.NET
                         }
                     }
 
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         if (user.Reset)
@@ -250,7 +250,7 @@ namespace EVSTAR.DB.NET
             return user;
         }
 
-        public List<User> SelectByClient(int clientID, out string errorMsg)
+        public List<User> SelectByClient(int clientID, string clientCode, out string errorMsg)
         {
             AddressHelper addressHelper = new AddressHelper();
             ClientHelper clientHelper = new ClientHelper();
@@ -259,7 +259,7 @@ namespace EVSTAR.DB.NET
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -284,10 +284,10 @@ namespace EVSTAR.DB.NET
                             User user = new User(r);
                             user.Authentication = "************";
                             result.Add(user);
-                            List<Client> clients = clientHelper.Select(user.ClientID, out errorMsg);
+                            List<Client> clients = clientHelper.Select(user.ClientID, clientCode, out errorMsg);
                             if (clients != null && clients.Count > 0)
                                 user.ParentClient = clients[0];
-                            List<Address> addresses = addressHelper.Select(user.AddressID, out errorMsg);
+                            List<Address> addresses = addressHelper.Select(user.AddressID, clientCode, out errorMsg);
                             if (addresses != null && addresses.Count > 0)
                                 user.UserAddress = addresses[0];
                         }
@@ -302,12 +302,12 @@ namespace EVSTAR.DB.NET
             return result;
         }
 
-        public void Delete(int id, out string errorMsg)
+        public void Delete(int id, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();

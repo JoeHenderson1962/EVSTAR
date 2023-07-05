@@ -36,7 +36,8 @@ namespace EVSTAR.Web.api
                     return products;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -83,11 +84,11 @@ namespace EVSTAR.Web.api
                     return product;
             }
 
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
             CoveredProductHelper cph = new CoveredProductHelper();
             List<CoveredProduct> prods = new List<CoveredProduct>();
             string errorMsg;
-            prods = cph.Select(id, clientCode,out errorMsg);
+            prods = cph.Select(id, 0, clientCode,out errorMsg);
             if (prods != null && prods.Count > 0)
             {
                 product = prods[0];
@@ -116,7 +117,7 @@ namespace EVSTAR.Web.api
                         return null;
                 }
 
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 CoveredProduct product = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (product != null)
                 {

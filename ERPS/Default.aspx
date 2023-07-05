@@ -206,7 +206,7 @@
             <div class="footer-desktop">
                 <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
                 <div class="footer-copyright">
-                    EVSTAR &copy; 2022
+                    EVSTAR &copy; 2023
                 </div>
             </div>
         </div>

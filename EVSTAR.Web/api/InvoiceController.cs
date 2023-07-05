@@ -22,7 +22,8 @@ namespace EVSTAR.Web.api
             {
                 string invoiceNum = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["invoice"]);
                 string email = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["email"]);
-                invoice = GetInvoice(invoiceNum, email);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+                invoice = GetInvoice(invoiceNum, email, clientCode);
             }
             catch (Exception ex)
             {
@@ -45,7 +46,8 @@ namespace EVSTAR.Web.api
                 //    if (hashed != provided)
                 //        return invoice;
                 //}
-                invoice = GetInvoice(id);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+                invoice = GetInvoice(id, clientCode);
             }
             catch (Exception ex)
             {
@@ -70,11 +72,11 @@ namespace EVSTAR.Web.api
                 //    if (hashed != provided)
                 //        return null;
                 //}
-
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 invoice = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (invoice != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -131,10 +133,11 @@ namespace EVSTAR.Web.api
                 //        return null;
                 //}
 
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 invoice = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (invoice != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -173,11 +176,11 @@ namespace EVSTAR.Web.api
             return invoice;
         }
 
-        private Invoice GetInvoice(int invoiceID)
+        private Invoice GetInvoice(int invoiceID, string clientCode)
         {
             Invoice invoice = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -201,11 +204,11 @@ namespace EVSTAR.Web.api
             return invoice;
         }
 
-        private Invoice GetInvoice(string invoiceNum, string email)
+        private Invoice GetInvoice(string invoiceNum, string email, string clientCode)
         {
             Invoice invoice = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

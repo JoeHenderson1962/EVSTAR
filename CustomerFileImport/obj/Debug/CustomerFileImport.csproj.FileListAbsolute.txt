@@ -13,11 +13,6 @@ C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Debug\C
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.CopyComplete
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Debug\CustomerFileImport.exe
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\CustomerFileImport\obj\Debug\CustomerFileImport.pdb
-C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.AssemblyReference.cache
-C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.SuggestedBindingRedirects.cache
-C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.CoreCompileInputs.cache
-C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.exe
-C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.pdb
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\CustomerFileImport.exe.config
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\CustomerFileImport.exe
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\CustomerFileImport.pdb
@@ -27,4 +22,9 @@ C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\Newtonsoft.J
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\Techcycle.DB.NET.pdb
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\Techcycle.Models.pdb
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.SuggestedBindingRedirects.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.CoreCompileInputs.cache
 C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.exe
+C:\Users\jhend\source\repos\TCS\EVSTAR\CustomerFileImport\obj\Debug\CustomerFileImport.pdb

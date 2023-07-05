@@ -31,7 +31,8 @@ namespace EVSTAR.Web.api
                     return fulfillmentTypes;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -71,7 +72,8 @@ namespace EVSTAR.Web.api
                     return fulfillmentType;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

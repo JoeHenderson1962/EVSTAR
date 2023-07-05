@@ -12,7 +12,7 @@ namespace EVSTAR.DB.NET
 {
     public class TokenHelper
     {
-        public List<User> Select(string username, string password, int id, out string errorMsg)
+        public List<User> Select(string username, string password, int id, string clientCode, out string errorMsg)
         {
             AddressHelper addressHelper = new AddressHelper();
             ClientHelper clientHelper = new ClientHelper();
@@ -21,7 +21,7 @@ namespace EVSTAR.DB.NET
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -65,13 +65,13 @@ namespace EVSTAR.DB.NET
                                 result.Add(user);
                                 if (user.ClientID > 0)
                                 {
-                                    List<Client> clients = clientHelper.Select(user.ClientID, out errorMsg);
+                                    List<Client> clients = clientHelper.Select(user.ClientID, clientCode, out errorMsg);
                                     if (clients != null && clients.Count > 0)
                                         user.ParentClient = clients[0];
                                 }
                                 if (user.AddressID > 0)
                                 {
-                                    List<Address> addresses = addressHelper.Select(user.AddressID, out errorMsg);
+                                    List<Address> addresses = addressHelper.Select(user.AddressID, clientCode, out errorMsg);
                                     if (addresses != null && addresses.Count > 0)
                                         user.UserAddress = addresses[0];
                                 }

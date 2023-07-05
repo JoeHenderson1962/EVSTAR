@@ -22,7 +22,7 @@ namespace EVSTAR.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             int productId = DBHelper.GetInt32Value(Request.Params["product"]);
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+            string clientCode = DBHelper.GetStringValue(Request.Params["clientCode"]);
             ClaimHelper ch = new ClaimHelper();
             string errorMsg = string.Empty;
             List<Claim> claims = ch.Select(0, 0, productId, clientCode, out errorMsg);
@@ -74,7 +74,7 @@ namespace EVSTAR.Web
                     txtResults.Text = "Unable to find the associated customer.";
             }
             else
-                txtResults.Text = "Unable to find an associated claim.";
+                txtResults.Text = $"Unable to find an associated claim.  Error: {errorMsg}";
         }
     }
 }

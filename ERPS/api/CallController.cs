@@ -32,7 +32,7 @@ namespace ERPS.api
                 string user = DBHelper.GetStringValue(HttpContext.Current.Request.Params["user"]);
                 string start = DBHelper.GetStringValue(HttpContext.Current.Request.Params["start"]);
                 string end = DBHelper.GetStringValue(HttpContext.Current.Request.Params["end"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 //string token = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["Authorization"]);
 
                 int callID = 0;

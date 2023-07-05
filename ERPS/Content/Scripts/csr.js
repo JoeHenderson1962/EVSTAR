@@ -140,7 +140,7 @@ $(function () {
             $.ajax({
                 type: 'GET',
                 url: "/api/user",
-                headers: { "username": username, "auth": pass },
+                headers: { "username": username, "auth": pass, "clientCode": "REACH" },
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
                     if (response == null || response.Error === "NOTFOUND") {
@@ -201,6 +201,7 @@ function loadPerilSubcategories() {
     $.ajax({
         url: "/api/peril/0",
         dataType: "json",
+        headers: { "clientCode": "REACH" },
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -229,6 +230,9 @@ function getCustomerInfo(custID) {
     $.ajax({
         url: "/api/customer/" + custID,
         dataType: "json",
+        headers: {
+            "clientCode": "REACH"
+        },
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -262,7 +266,7 @@ function getCall(callID, user, current, next) {
     $.ajax({
         url: "/api/Call?call=" + callID,
         dataType: "json",
-        //headers: { "data": JSON.stringify(call) },
+        headers: { "clientCode": "REACH" },
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -504,7 +508,7 @@ function GetCustomerScript(scriptName, clientID, lblName, callerName) {
     $.ajax({
         url: "/api/script?name=" + scriptName + "&client=" + clientID.toString(),
         dataType: "json",
-        //headers: { "data": JSON.stringify(theCustomer) },
+        headers: { "clientCode": "REACH" },
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -541,7 +545,7 @@ function upsertCustomer(theCustomer) {
         url: "/api/Customer",
         data: theCustomer,
         dataType: "json",
-        headers: { "data": JSON.stringify(theCustomer) },
+        headers: { "data": JSON.stringify(theCustomer), "clientCode": "REACH" },
         type: type,
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -565,7 +569,7 @@ function saveCustomer(theCall, current) {
     $.ajax({
         url: "/api/Customer",
         dataType: "json",
-        headers: { "customer": theCall.CustomerID },
+        headers: { "customer": theCall.CustomerID, "clientCode": "REACH" },
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -598,7 +602,7 @@ function upsertCall(theCall, next) {
         url: "/api/Call" + (theCall.ID > 0 ? "/" + theCall.ID : ""),
         data: JSON.stringify(theCall),
         dataType: "json",
-        headers: { "data": (type == 'POST' ? JSON.stringify(theCall) : "") },
+        headers: { "data": (type == 'POST' ? JSON.stringify(theCall) : ""), "clientCode": "REACH" },
         type: type,
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -628,6 +632,7 @@ function GetOpenClaim(theCall) {
     $.ajax({
         url: "/api/Claim?customer=" + theCall.CustomerID + "&op=open",
         data: JSON.stringify(theCall),
+        headers: { "clientCode": "REACH" },
         dataType: "json",
         type: 'GET',
         contentType: "application/json; charset=utf-8",
@@ -652,7 +657,7 @@ function updateEquipment(theCoveredProduct) {
         url: "/api/product" + (theCoveredProduct.ID > 0 ? "/" + theCoveredProduct.ID : ""),
         //data: theCall,
         dataType: "json",
-        headers: { "data": JSON.stringify(theCoveredProduct) },
+        headers: { "data": JSON.stringify(theCoveredProduct), "clientCode": "REACH" },
         type: 'PUT',
         contentType: "application/json; charset=utf-8",
         success: function (data) {
@@ -727,7 +732,7 @@ function sendEmail(to, subject, body) {
     $.ajax({
         type: 'POST',
         url: url,
-        headers: { "func": "MAIL", "subj": btoa(subject), "body": btoa(body) },
+        headers: { "func": "MAIL", "subj": btoa(subject), "body": btoa(body), "clientCode": "REACH" },
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             if (response == null) {
@@ -787,7 +792,7 @@ function loadPage(name) {
         $.ajax({
             type: 'GET',
             url: '/api/page?name=' + name,
-            headers: { "user": user.ID, "customer": 0, "call": thisCallID, "language": 1, "client": user.ClientID },
+            headers: { "user": user.ID, "customer": 0, "call": thisCallID, "language": 1, "client": user.ClientID, "clientCode": "REACH" },
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
                 if (response == null || response.length === 0) {
@@ -1097,7 +1102,7 @@ function getClaimsGridData(id) {
         $.ajax({
             type: 'GET',
             url: '/api/page?name=CustomerClaims',
-            headers: { "user": user.ID, "customer": thisCall != null ? thisCall.CustomerID : 0, "call": thisCallID, "language": 1, "client": user.ClientID },
+            headers: { "user": user.ID, "customer": thisCall != null ? thisCall.CustomerID : 0, "call": thisCallID, "language": 1, "client": user.ClientID, "clientCode": "REACH" },
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
                 if (response == null || response.length === 0) {
@@ -1136,7 +1141,7 @@ function getCallGridData(listFor, id) {
         $.ajax({
             type: 'GET',
             url: url,
-            headers: { "user": user.ID, "customer": thisCall != null ? thisCall.CustomerID : 0, "call": thisCallID, "language": 1, "client": user.ClientID },
+            headers: { "user": user.ID, "customer": thisCall != null ? thisCall.CustomerID : 0, "call": thisCallID, "language": 1, "client": user.ClientID, "clientCode": "REACH" },
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
                 if (response == null || response.length === 0) {
@@ -1161,7 +1166,7 @@ function getCallGridData(listFor, id) {
 
 function loadcall(callID) {
     alert('This is where we load the information for this previous call.');
-} 
+}
 
 function loadclaim(claimID) {
     alert('This is where we load the information for this previous claim.');

@@ -549,10 +549,6 @@ C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\ERPS\obj\Debug\ERPS.csproj.Cor
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\ERPS\obj\Debug\ERPS.csproj.CopyComplete
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\ERPS\obj\Debug\ERPS.dll
 C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\ERPS\obj\Debug\ERPS.pdb
-C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.csproj.AssemblyReference.cache
-C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.csproj.CoreCompileInputs.cache
-C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.dll
-C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.pdb
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\ERPS.dll.config
@@ -823,4 +819,8 @@ C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\ru\Microsoft.CodeAnalysis.CSharp
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\bin\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.csproj.CoreCompileInputs.cache
 C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\ERPS\obj\Debug\ERPS.pdb

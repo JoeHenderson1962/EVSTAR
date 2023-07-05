@@ -41,6 +41,7 @@ namespace EVSTAR.Web.api
             string function = DBHelper.GetStringValue(HttpContext.Current.Request.Params["f"]).ToUpper();
             string salesOrder = DBHelper.GetStringValue(HttpContext.Current.Request.Params["s"]).ToUpper();
             int.TryParse(salesOrder, out int salesOrderID);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]).ToUpper();
 
             if (function == "CHARGE" && value != null)
             {
@@ -53,7 +54,7 @@ namespace EVSTAR.Web.api
                 sql.AppendLine("@CardNumber, @ExpDate, @CardCode, @RSCustomerID, @RSContactID, @RSInvoice, @ClaimID, @CustomerID) ");
                 sql.AppendLine("SELECT SCOPE_IDENTITY();");
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection sqlConn = new SqlConnection(constr))
                 {
                     sqlConn.Open();
@@ -90,14 +91,14 @@ namespace EVSTAR.Web.api
                 ANetApiResponse response = ChargeCreditCard.Run(ApiLoginID, ApiTransactionKey, value.Amount, value.FirstName, value.LastName,
                     value.Address, value.City, value.PostalCode, value.CardNumber, value.ExpDate, value.CardCode);
                 value.Response = JsonConvert.SerializeObject(response);
-                UpdateCCTransaction(value);
+                UpdateCCTransaction(value, clientCode);
                 return value;
             }
             else
                 return null;
         }
 
-        private void UpdateCCTransaction(CCTransaction value)
+        private void UpdateCCTransaction(CCTransaction value, string clientCode)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendLine("UPDATE CCTransactions SET FirstName=@FirstName, LastName=@LastName, Address=@Address, City=@City, ");
@@ -108,7 +109,7 @@ namespace EVSTAR.Web.api
             sql.AppendLine("AuthCode=@AuthCode, ClaimID=@ClaimID, CustomerID=@CustomerID ");
             sql.AppendLine("WHERE ID=@ID ");
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(constr))
             {
                 sqlConn.Open();
@@ -145,7 +146,8 @@ namespace EVSTAR.Web.api
         // PUT api/<controller>
         public void Put([FromBody] CCTransaction value)
         {
-            UpdateCCTransaction(value);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]).ToUpper();
+            UpdateCCTransaction(value, clientCode);
             //string ApiLoginID = ConfigurationManager.AppSettings["AuthorizeNetAPILoginID"];
             //string ApiTransactionKey = ConfigurationManager.AppSettings["AuthorizeNetTransactionKey"];
             //string function = DBHelper.GetStringValue(HttpContext.Current.Request.Params["f"]).ToUpper();

@@ -49,6 +49,8 @@
     <Compile Include="CallAction.cs" />
     <Compile Include="Address.cs" />
     <Compile Include="Assets.cs" />
+    <Compile Include="ChargerQuoteRequest.cs" />
+    <Compile Include="Vehicle.cs" />
     <Compile Include="CustomerLookup.cs" />
     <Compile Include="ServiceBenchJob.cs" />
     <Compile Include="CallResult.cs" />

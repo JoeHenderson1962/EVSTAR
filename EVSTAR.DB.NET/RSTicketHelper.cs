@@ -13,14 +13,14 @@ namespace EVSTAR.DB.NET
 {
     public class RSTicketHelper
     {
-        public Tickets Select(long id)
+        public Tickets Select(long id, string clientCode)
         {
             Tickets tickets = new Tickets();
             tickets.tickets = new List<Ticket>();
 
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -41,7 +41,7 @@ namespace EVSTAR.DB.NET
                         {
                             Ticket ticket = new Ticket(r);
                             RSCommentHelper commentHelper = new RSCommentHelper();
-                            ticket.comments = commentHelper.Select(ticket.id);
+                            ticket.comments = commentHelper.Select(ticket.id, clientCode);
                             tickets.tickets.Add(ticket);
                         }
                         r.Close();

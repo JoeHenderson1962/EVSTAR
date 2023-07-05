@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Claims.aspx.cs" Inherits="Techcycle.Web.Claims"
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Claims.aspx.cs" Inherits="EVSTAR.Web.Claims"
     MasterPageFile="~/Site_Evstar.Master" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -50,7 +50,7 @@
     <div class="footer-desktop-login">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
         </div>
     </div>
 </asp:Content>

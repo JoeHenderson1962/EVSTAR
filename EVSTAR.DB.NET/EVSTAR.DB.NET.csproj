@@ -48,6 +48,8 @@
     <Compile Include="ClaimStatusHistoryHelper.cs" />
     <Compile Include="CoverageHelper.cs" />
     <Compile Include="DenialReasonHelper.cs" />
+    <Compile Include="ChargerQuoteHelper.cs" />
+    <Compile Include="VehicleHelper.cs" />
     <Compile Include="ServiceJobHelper.cs" />
     <Compile Include="PerilSubCategoryHelper.cs" />
     <Compile Include="EquipmentHelper.cs" />

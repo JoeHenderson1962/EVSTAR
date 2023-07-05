@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Reimbursement.aspx.cs" Inherits="Techcycle.Web.Reimbursement" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Reimbursement.aspx.cs" Inherits="EVSTAR.Web.Reimbursement" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -32,11 +32,25 @@
         <div class="verify-panel-desktop">
             <div class="verify-content-desktop" style="gap: 40px;">
                 <div class="login-content-text-field1-desktop" style="order: 0; width: 800px;">
-                    <div class="login-text-input-label-desktop" style="width: 800px; height: 100px;">
+                    <div class="login-text-input-label-desktop" style="width: 800px; height: 100px;display:none;" id="divReimburse">
                         Thank you for uploading your receipt and any additional
                     documents. Our team will review your submission and when
                     authorization is complete, you will receive an email with next steps
                     regarding your reimbursement payment.<br />
+                        <br />
+                        Please select your preferred reimbursement payment method.               
+                    </div>
+                    <div class="login-text-input-label-desktop" style="width: 800px; height: 100px; display:none;" id="divBuyout">
+                        Thank you for submitting your claim. Based on your product type, your product is eligible
+                        for buyout. Our team will review your submission and when authorization is complete, you will receive an
+                        email with next steps regarding your payment.<br />
+                        <br />
+                        Please select your preferred reimbursement payment method.               
+                    </div>
+                    <div class="login-text-input-label-desktop" style="width: 800px; height: 100px; display:none;" id="divBuyoutServiceFee">
+                        Thank you for submitting your claim and service fee. Based on your product type, your product is eligible
+                        for buyout. Our team will review your submission and when authorization is complete, you will receive an
+                        email with next steps regarding your payment.<br />
                         <br />
                         Please select your preferred reimbursement payment method.               
                     </div>
@@ -75,7 +89,7 @@
     <div class="footer-desktop-login">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
        
         </div>
     </div>

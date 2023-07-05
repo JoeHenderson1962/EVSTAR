@@ -13,13 +13,13 @@ namespace EVSTAR.DB.NET
 {
     public class AddressHelper
     {
-        public List<Address> Select(int id, out string errorMsg)
+        public List<Address> Select(int id, string clientCode, out string errorMsg)
         {
             List<Address> result = new List<Address>();
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();

@@ -70,14 +70,16 @@ namespace EVSTAR.Web.api
                     int catSel = DBHelper.GetInt32Value(HttpContext.Current.Request.Params["cat"]);
                     string label = DBHelper.GetStringValue(HttpContext.Current.Request.Params["label"]);
                     int claimNum = DBHelper.GetInt32Value(HttpContext.Current.Request.Params["claim"]);
-                    string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                    string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
                     Customer cust = LookupCustomer(address, clientCode);
                     if (cust != null)
                     {
-                        ClientHelper ch = new ClientHelper();
                         string errorMsg = string.Empty;
-                        List<Client> client = ch.Select(cust.ClientID, out errorMsg);
+                        ClaimHelper clh = new ClaimHelper();
+                        Claim thisClaim = clh.Select(claimNum, 0, 0, clientCode, out errorMsg).FirstOrDefault();
+                        ClientHelper ch = new ClientHelper();
+                        List<Client> client = ch.Select(cust.ClientID, clientCode, out errorMsg);
                         CoveredProduct prod = LookupProduct(devID, clientCode);
                         if (prod != null && client != null && client.Count > 0)
                         {
@@ -89,15 +91,34 @@ namespace EVSTAR.Web.api
                             if (option.ToUpper() == "LOCAL")
                             {
                                 txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSTARClaimInitiatedLocalRepair.html"));
-                                //txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/reimbursement-template.html"));
-                                subject = "Your {DEVICE NAME} claim is submitted, next step, local repair";
+                                subject = "Your {DEVICE NAME} claim is submitted; next step, local repair";
                             }
-                            else
+                            if (option.ToUpper() == "BUYOUT")
+                            {
+                                txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSTARClaimInitiatedBuyout.html"));
+                                subject = "Your {DEVICE NAME} claim is submitted";
+                            }
+                            if (option.ToUpper() == "BUYOUTAPPROVED")
+                            {
+                                txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSTARClaimApprovedBuyout.html"));
+                                subject = "Your Claim has been approved";
+                            }
+                            else if (option.ToUpper() == "EVSE")
+                            {
+                                txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSEClaimInitiated.html"));
+                                subject = "Your {DEVICE NAME} claim is submitted; next step, scheduling your repair appointment";
+                            }
+                            else if (option.ToUpper() == "IN-HOME")
+                            {
+                                txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSTARClaimInitiatedInHomeRepair.html"));
+                                subject = "Your {DEVICE NAME} claim is submitted; next step, troubleshooting";
+                            }
+                            else 
                             {
                                 //txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/mail-in-template.html"));
                                 txt = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Content/EVSTARClaimInitiatedDepotRepair.html"));
                                 txt = txt.Replace("{LABEL LINK}", label);
-                                subject = "Your {DEVICE NAME} claim is submitted, next step, shipping";
+                                subject = "Your {DEVICE NAME} claim is submitted; next step, shipping";
                             }
                             subject = subject.Replace("{DEVICE NAME}", prod.Manufacturer + " " + prod.Model);
                             txt = txt.Replace("{MAKE}", prod.Manufacturer).Replace("{MODEL}", prod.Model).Replace("{SNTYPE}", prod.IMEI.Length > 0 ? "IMEI" : "");
@@ -109,23 +130,40 @@ namespace EVSTAR.Web.api
                             txt = txt.Replace("{DATEFILED}", dateSel);
                             txt = txt.Replace("{REPAIR LIMIT}", String.Format("{0:C}", cust.WarrantyProgram.MaxAmountPerClaim));
                             txt = txt.Replace("{PROGRAM PHONE}", client[0].ContactPhone1);
+                            txt = txt.Replace("{REIMBURSEMENT}", thisClaim.ReimbursementAmount.ToString("C"));
 #if DEBUG
                             if (client[0].Code == "REACH")
                             {
-                                txt = txt.Replace("{PROGRAM URL}", "http://testreachmobile.goevstar.com/");
+                                txt = txt.Replace("{PROGRAM URL}", "https://testclaims.goevstar.com/");
+                            }
+                            else if (client[0].Code == "DOB")
+                            {
+                                txt = txt.Replace("{PROGRAM URL}", "https://testclaims.goevstar.com/");
+                            }
+                            else if (client[0].Code == "EVSTAR")
+                            {
+                                txt = txt.Replace("{PROGRAM URL}", "https://testclaims.goevstar.com/");
                             }
                             else
                             {
-                                txt = txt.Replace("{PROGRAM URL}", "http://testdobson.goevstar.com/");
+                                txt = txt.Replace("{PROGRAM URL}", "https://testclaims.goevstar.com/");
                             }
 #else
                             if (client[0].Code == "REACH")
                             {
-                                txt = txt.Replace("{PROGRAM URL}", "https://reachmobile.goevstar.com/");
+                                txt = txt.Replace("{PROGRAM URL}", "https://claims.goevstar.com/");
+                            }
+                            else if (client[0].Code == "DOB")
+                            {
+                                txt = txt.Replace("{PROGRAM URL}", "http://claims.goevstar.com/");
+                            }
+                            else if (client[0].Code == "EVSTAR")
+                            {
+                                txt = txt.Replace("{PROGRAM URL}", "http://claims.goevstar.com/");
                             }
                             else
                             {
-                                txt = txt.Replace("{PROGRAM URL}", "https://dobson.goevstar.com/");
+                                txt = txt.Replace("{PROGRAM URL}", "http://claims.goevstar.com/");
                             }
 #endif
                             SendEmail(address, subject, txt);
@@ -232,7 +270,7 @@ namespace EVSTAR.Web.api
 
             CoveredProductHelper helper = new CoveredProductHelper();
             string errorMsg = string.Empty;
-            List<CoveredProduct> prods = helper.Select(id, clientCode, out errorMsg);
+            List<CoveredProduct> prods = helper.Select(id, 0, clientCode, out errorMsg);
             if (errorMsg != string.Empty)
             {
                 throw new Exception(errorMsg);

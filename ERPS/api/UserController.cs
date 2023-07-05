@@ -27,7 +27,7 @@ namespace ERPS.api
                 string errorMsg = string.Empty;   
                 string username = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["username"]);
                 string authentication = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["auth"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 List<User> users = userHelper.Select(username, authentication, 0, clientCode, out errorMsg);
                 if (users != null && users.Count > 0)
                 {
@@ -57,7 +57,7 @@ namespace ERPS.api
             User user = null;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -99,7 +99,7 @@ namespace ERPS.api
             User user = null;
             try
             {
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 string errorMsg = string.Empty;
                 List<User> users = userHelper.Select(string.Empty, string.Empty, id, clientCode, out errorMsg);
                 if (users != null && users.Count > 0)

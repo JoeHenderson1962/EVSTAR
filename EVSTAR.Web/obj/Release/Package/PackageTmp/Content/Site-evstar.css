@@ -628,14 +628,14 @@
     top: 0px;
     font-family: 'Lato';
     font-style: normal;
-    font-weight: lighter;
+    font-weight: normal;
     font-size: 20px;
     line-height: 32px;
     /* or 210% */
     /*    display: flex;
 */ align-items: center;
     text-align: center;
-    color: #747474;
+    color: #718382;
 }
 
 .head-body-desktop {
@@ -1414,12 +1414,12 @@
     /* Connected Home protection */
 
 
-    width: 236px;
-    height: 24px;
+    width: 300px;
+    height: 30px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
     /* or 167% */
 
@@ -1986,7 +1986,6 @@ Select a device to continue */
     .product-widget-selectable:hover {
         border: 3px solid #333F48;
     }
-
 .product-widget-non-selectable {
     /* Selectable widget */
 
@@ -2043,6 +2042,10 @@ Select a device to continue */
     color: #489A2E;
 }
 
+    .product-widget-dev-text a {
+        text-decoration: none;
+    }
+
 .add-product-widget {
     /* 🟢 Product widget */
 
@@ -2082,6 +2085,10 @@ Select a device to continue */
     text-align: center;
 }
 
+    .add-product-widget-selectable a {
+        text-decoration: none;
+    }
+
 .add-product-button {
     /* 🟢 Button */
 
@@ -2100,6 +2107,10 @@ Select a device to continue */
     border-radius: 9999px;
     margin-top: 46px;
 }
+
+    .add-product-button a {
+        text-decoration: none;
+    }
 
 .add-product-button-text {
     /* + */
@@ -2126,6 +2137,10 @@ Select a device to continue */
     order: 0;
     flex-grow: 0;
 }
+
+    .add-product-button-text a {
+        text-decoration: none;
+    }
 
 #divProducts {
     height: 705px;
@@ -3308,3 +3323,32 @@ a {
     .drop-area.highlight {
         border-color: purple;
     }
+
+.c3 {
+    color: #201f1e;
+    font-weight: 700;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Lato";
+    font-style: normal
+}
+
+.c4 {
+    color: #201f1e;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Lato";
+    font-style: normal
+}
+
+.c2 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.15;
+    orphans: 2;
+    widows: 2;
+    text-align: left
+}

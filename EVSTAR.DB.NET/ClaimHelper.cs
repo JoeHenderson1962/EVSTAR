@@ -19,6 +19,12 @@ namespace EVSTAR.DB.NET
         public List<EVSTAR.Models.Claim> Select(int id, int customerId, int productId, string clientCode, out string errorMsg)
         {
             List<EVSTAR.Models.Claim> result = new List<EVSTAR.Models.Claim>();
+            if (String.IsNullOrEmpty(clientCode))
+            {
+                errorMsg = "Invalid ClientCode";
+                return result;
+            }
+
             errorMsg = string.Empty;
             try
             {
@@ -75,7 +81,7 @@ namespace EVSTAR.DB.NET
                             }
                             if (claim.CoveredProductID > 0)
                             {
-                                List<CoveredProduct> products = coveredProductHelper.Select(claim.CoveredProductID, clientCode, out errorMsg);
+                                List<CoveredProduct> products = coveredProductHelper.Select(claim.CoveredProductID, 0, clientCode, out errorMsg);
                                 if (products != null && products.Count > 0)
                                 {
                                     claim.ClaimProduct = products[0];
@@ -83,7 +89,7 @@ namespace EVSTAR.DB.NET
                             }
                             if (claim.AddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(claim.AddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(claim.AddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                 {
                                     claim.ClaimAddress = addresses[0];
@@ -262,7 +268,15 @@ namespace EVSTAR.DB.NET
                             if (data.DateOfLoss != DateTime.MinValue)
                                 cmd.Parameters.AddWithValue("@DateOfLoss", data.DateOfLoss);
                             else
-                                cmd.Parameters.AddWithValue("@DateOfLoss", DBNull.Value);
+                            {
+                                if (data.EventDate.HasValue && data.EventDate != DateTime.MinValue)
+                                {
+                                    data.DateOfLoss = data.EventDate.Value;
+                                    cmd.Parameters.AddWithValue("@DateOfLoss", data.DateOfLoss);
+                                }
+                                else
+                                    cmd.Parameters.AddWithValue("@DateOfLoss", DBNull.Value);
+                            }
 
                             if (data.RepairVendorID > 0)
                                 cmd.Parameters.AddWithValue("@RepairVendorID", data.RepairVendorID);
@@ -287,8 +301,8 @@ namespace EVSTAR.DB.NET
                             cmd.Parameters.AddWithValue("@Deductible", data.Deductible);
                             cmd.Parameters.AddWithValue("@CoverageID", data.CoverageID);
 
-                            if (data.DateOfLoss != DateTime.MinValue)
-                                cmd.Parameters.AddWithValue("@EventDate", data.DateOfLoss);
+                            if (data.EventDate != DateTime.MinValue)
+                                cmd.Parameters.AddWithValue("@EventDate", data.EventDate);
                             else
                                 cmd.Parameters.AddWithValue("@EventDate", DBNull.Value);
 
@@ -520,7 +534,15 @@ namespace EVSTAR.DB.NET
                             if (data.DateOfLoss != DateTime.MinValue)
                                 cmd.Parameters.AddWithValue("@DateOfLoss", data.DateOfLoss);
                             else
-                                cmd.Parameters.AddWithValue("@DateOfLoss", DBNull.Value);
+                            {
+                                if (data.EventDate.HasValue && data.EventDate != DateTime.MinValue)
+                                {
+                                    data.DateOfLoss = data.EventDate.Value;
+                                    cmd.Parameters.AddWithValue("@DateOfLoss", data.DateOfLoss);
+                                }
+                                else
+                                    cmd.Parameters.AddWithValue("@DateOfLoss", DBNull.Value);
+                            }
 
                             if (data.RepairVendorID > 0)
                                 cmd.Parameters.AddWithValue("@RepairVendorID", data.RepairVendorID);

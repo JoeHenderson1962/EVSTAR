@@ -29,7 +29,7 @@ namespace EVSTAR.Web.api
                 int customerID = 0;
                 Int32.TryParse(customer, out customerID);
 
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 string provided = Encryption.MD5(code + email);
                 if (hashed != provided)
                 {
@@ -134,7 +134,7 @@ namespace EVSTAR.Web.api
                     if (hashed != provided)
                         return claim;
                 }
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 claim = GetClaim(id, clientCode);
             }
             catch (Exception ex)
@@ -160,7 +160,7 @@ namespace EVSTAR.Web.api
                     if (hashed != provided)
                         return null;
                 }
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
                 claim = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (claim != null)
@@ -181,51 +181,51 @@ namespace EVSTAR.Web.api
             return claim;
         }
 
-        private ClaimStatusHistory SaveClaimStatus(ClaimStatusHistory status, string clientCode)
-        {
-            try
-            {
-                if (status != null)
-                {
+        //private ClaimStatusHistory SaveClaimStatus(ClaimStatusHistory status, string clientCode)
+        //{
+        //    try
+        //    {
+        //        if (status != null)
+        //        {
 
-                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
-                    using (SqlConnection con = new SqlConnection(constr))
-                    {
-                        con.Open();
-                        StringBuilder sql = new StringBuilder();
-                        sql.AppendLine("INSERT INTO ClaimStatusHistory ");
-                        sql.AppendLine("(ClaimID, StatusID, StatusDate, UserName) ");
-                        sql.AppendLine("VALUES (@ClaimID, @StatusID, @StatusDate, @UserName); ");
-                        sql.AppendLine("SELECT SCOPE_IDENTITY() ");
-                        using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
-                        {
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.AddWithValue("@ClaimID", status.ClaimID);
-                            cmd.Parameters.AddWithValue("@StatusID", status.StatusID);
-                            cmd.Parameters.AddWithValue("@StatusDate", status.StatusDate);
-                            cmd.Parameters.AddWithValue("@UserName", status.UserName);
-                            status.ID = DBHelper.GetInt32Value(cmd.ExecuteScalar());
-                        }
+        //            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
+        //            using (SqlConnection con = new SqlConnection(constr))
+        //            {
+        //                con.Open();
+        //                StringBuilder sql = new StringBuilder();
+        //                sql.AppendLine("INSERT INTO ClaimStatusHistory ");
+        //                sql.AppendLine("(ClaimID, StatusID, StatusDate, UserName) ");
+        //                sql.AppendLine("VALUES (@ClaimID, @StatusID, @StatusDate, @UserName); ");
+        //                sql.AppendLine("SELECT SCOPE_IDENTITY() ");
+        //                using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
+        //                {
+        //                    cmd.CommandType = CommandType.Text;
+        //                    cmd.Parameters.AddWithValue("@ClaimID", status.ClaimID);
+        //                    cmd.Parameters.AddWithValue("@StatusID", status.StatusID);
+        //                    cmd.Parameters.AddWithValue("@StatusDate", status.StatusDate);
+        //                    cmd.Parameters.AddWithValue("@UserName", status.UserName);
+        //                    status.ID = DBHelper.GetInt32Value(cmd.ExecuteScalar());
+        //                }
 
-                        sql.Clear();
-                        sql.AppendLine("UPDATE Claims SET LastUpdated = GETDATE() WHERE ID=@ClaimID");
-                        using (SqlCommand cmd2 = new SqlCommand(sql.ToString(), con))
-                        {
-                            cmd2.CommandType = CommandType.Text;
-                            cmd2.Parameters.AddWithValue("@ClaimID", status.ClaimID);
-                            cmd2.ExecuteNonQuery();
-                        }
-                        con.Close();
-                    }
+        //                sql.Clear();
+        //                sql.AppendLine("UPDATE Claims SET LastUpdated = GETDATE() WHERE ID=@ClaimID");
+        //                using (SqlCommand cmd2 = new SqlCommand(sql.ToString(), con))
+        //                {
+        //                    cmd2.CommandType = CommandType.Text;
+        //                    cmd2.Parameters.AddWithValue("@ClaimID", status.ClaimID);
+        //                    cmd2.ExecuteNonQuery();
+        //                }
+        //                con.Close();
+        //            }
 
-                }
-            }
-            catch (Exception ex)
-            {
-                return status;
-            }
-            return status;
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return status;
+        //    }
+        //    return status;
+        //}
 
         private Claim GetClaim(int claimID, string clientCode)
         {

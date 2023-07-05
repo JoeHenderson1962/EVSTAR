@@ -63,7 +63,7 @@ namespace EVSTAR.DB.NET
                             Coverage coverage = new Coverage(r);
                             if (coverage.ClientID > 0)
                             {
-                                List<Client> clients = clientHelper.Select(coverage.ClientID, out errorMsg);
+                                List<Client> clients = clientHelper.Select(coverage.ClientID, clientCode, out errorMsg);
                                 if (clients != null && clients.Count > 0)
                                 {
                                     coverage.CoverageClient = clients[0];
@@ -88,7 +88,7 @@ namespace EVSTAR.DB.NET
                             }
                             if (coverage.CoveredProductID > 0)
                             {
-                                List<CoveredProduct> products = coveredProductHelper.Select(coverage.CoveredProductID, clientCode, out errorMsg);
+                                List<CoveredProduct> products = coveredProductHelper.Select(coverage.CoveredProductID, 0, clientCode, out errorMsg);
                                 if (products != null && products.Count > 0)
                                 {
                                     coverage.CoverageProduct = products[0];

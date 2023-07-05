@@ -32,7 +32,7 @@ namespace ERPS.api
             string email = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["email"]);
             string password = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["password"]);
             string mdn = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["mdn"]);
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
             string errorMsg = string.Empty;
             customers = customerHelper.Select(email, password, mdn, customerId, clientId, clientCode, out errorMsg);
@@ -181,7 +181,7 @@ namespace ERPS.api
         {
             Program program = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -211,7 +211,7 @@ namespace ERPS.api
         {
             Client client = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -239,7 +239,7 @@ namespace ERPS.api
         {
             EVSTAR.Models.Address address = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -269,14 +269,15 @@ namespace ERPS.api
             try
             {
                 string data = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["data"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 customer = JsonConvert.DeserializeObject<Customer>(data);
                 string errorMsg;
                 if (customer == null)
                 {
                     if (customer.ID == 0)
-                        customer = customerHelper.Insert(customer, out errorMsg);
+                        customer = customerHelper.Insert(customer, clientCode, out errorMsg);
                     else
-                        customer = customerHelper.Update(customer, out errorMsg);
+                        customer = customerHelper.Update(customer, clientCode, out errorMsg);
 
                     if (!string.IsNullOrEmpty(errorMsg))
                     {
@@ -305,7 +306,7 @@ namespace ERPS.api
                 cust.MailingAddress = addressController.Post(cust.MailingAddress);
                 cust.MailingAddressID = cust.MailingAddress.ID;
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -350,14 +351,15 @@ namespace ERPS.api
             try
             {
                 string data = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["data"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 customer = JsonConvert.DeserializeObject<Customer>(data);
                 string errorMsg;
                 if (customer != null)
                 {
                     if (customer.ID == 0)
-                        customer = customerHelper.Insert(customer, out errorMsg);
+                        customer = customerHelper.Insert(customer, clientCode, out errorMsg);
                     else
-                        customer = customerHelper.Update(customer, out errorMsg);
+                        customer = customerHelper.Update(customer, clientCode, out errorMsg);
 
                     if (!string.IsNullOrEmpty(errorMsg))
                     {
@@ -376,7 +378,7 @@ namespace ERPS.api
         {
             Customer customer = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -414,13 +416,22 @@ namespace ERPS.api
             {
                 AddressController addressController = new AddressController();
                 cust.BillingAddress = addressController.Post(cust.BillingAddress);
-                cust.BillingAddressID = cust.BillingAddress.ID;
+                if (cust.BillingAddress != null)
+                {
+                    cust.BillingAddressID = cust.BillingAddress.ID;
+                }
                 cust.ShippingAddress = addressController.Post(cust.ShippingAddress);
-                cust.ShippingAddressID = cust.ShippingAddress.ID;
+                if (cust.ShippingAddress != null)
+                {
+                    cust.ShippingAddressID = cust.ShippingAddress.ID;
+                }
                 cust.MailingAddress = addressController.Post(cust.MailingAddress);
-                cust.MailingAddressID = cust.MailingAddress.ID;
+                if (cust.MailingAddress != null)
+                {
+                    cust.MailingAddressID = cust.MailingAddress.ID;
+                }
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -467,7 +478,7 @@ namespace ERPS.api
 
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -494,7 +505,7 @@ namespace ERPS.api
         {
             Customer customer = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

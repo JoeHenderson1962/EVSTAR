@@ -14,13 +14,13 @@ namespace EVSTAR.DB.NET
 {
     public class CallActionHelper
     {
-        public List<CallAction> Select(int id, out string errorMsg)
+        public List<CallAction> Select(int id, string clientCode, out string errorMsg)
         {
             List<CallAction> result = new List<CallAction>();
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -54,14 +54,14 @@ namespace EVSTAR.DB.NET
             return result;
         }
 
-        public CallAction Insert(CallAction action, out string errorMsg)
+        public CallAction Insert(CallAction action, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
                 if (action != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -93,14 +93,14 @@ namespace EVSTAR.DB.NET
             return action;
         }
 
-        public CallAction Update(CallAction action, out string errorMsg)
+        public CallAction Update(CallAction action, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
                 if (action != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();

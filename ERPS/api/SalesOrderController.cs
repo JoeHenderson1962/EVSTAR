@@ -32,7 +32,7 @@ namespace ERPS.api
             AddressController ac = new AddressController();
             RSCustomerController cc = new RSCustomerController();
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -67,7 +67,7 @@ namespace ERPS.api
         {
             List<TCModels.OrderLine> orderLines = new List<TCModels.OrderLine>();
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -141,7 +141,7 @@ namespace ERPS.api
                 sql.AppendLine("@TotalTax, @ItemTotal, @OrderTotal, @CCTransactionID, @AmountPaid)" );
                 sql.AppendLine("SELECT SCOPE_IDENTITY();");
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection sqlConn = new SqlConnection(constr))
                 {
                     sqlConn.Open();
@@ -221,7 +221,7 @@ namespace ERPS.api
                 sql.AppendLine("ItemTotal=@ItemTotal, OrderTotal=@OrderTotal, CCTransactionID=@CCTransactionID, AmountPaid=@AmountPaid ");
                 sql.AppendLine("WHERE ID=@ID");
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection sqlConn = new SqlConnection(constr))
                 {
                     sqlConn.Open();
@@ -261,7 +261,7 @@ namespace ERPS.api
             sql.AppendLine("DELETE FROM OrderLines ");
             sql.AppendLine("WHERE SalesOrderID=@SalesOrderID");
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(constr))
             {
                 sqlConn.Open();
@@ -283,7 +283,7 @@ namespace ERPS.api
             sql.AppendLine("@Taxable, @TaxAmount, @StudentName, @AssetTag, @SerialNumber);");
             sql.AppendLine("SELECT SCOPE_IDENTITY();");
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(constr))
             {
                 sqlConn.Open();

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="CustomerLanding.aspx.cs" Inherits="Techcycle.Web.CustomerLanding" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="CustomerLanding.aspx.cs" Inherits="EVSTAR.Web.CustomerLanding" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -49,7 +49,10 @@
                         <label id="lblProgramPhone"></label>--%>
                     </div>
                 </div>
-                <div id="divProducts" style="margin-top: 40px; padding: 10px; height: 610px; width: 825px; overflow-x: hidden; overflow-y: auto;">
+                <div id="divProducts" style="margin-top: 40px; padding: 10px; height: 510px; width: 825px; overflow-x: hidden; overflow-y: auto;">
+                </div>
+                <div class="login-button-row-desktop" style="width: 600px;" id="divDobsonRouter">
+                    <b>For any router issues or questions, please contact Dobson directly at 855.5.DOBSON (855.536.2766).</b>
                 </div>
             </div>
         </div>
@@ -66,7 +69,7 @@
     <div class="footer-desktop-login2">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
         </div>
     </div>
 </asp:Content>

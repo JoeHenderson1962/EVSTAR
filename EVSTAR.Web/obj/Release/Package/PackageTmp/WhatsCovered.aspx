@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="WhatsCovered.aspx.cs" Inherits="Techcycle.Web.WhatsCovered" %>
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="WhatsCovered.aspx.cs" Inherits="EVSTAR.Web.WhatsCovered" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -32,74 +32,70 @@
     </div>
     <div class="newprod-panel-desktop">
         <div class="newprod-block-desktop">
-            <%--            <div class="newprod-frame-506353-desktop">
-                <div class="newprod-callout-dark-desktop">
-                    <div class="newprod-frame-506346-desktop">
-                        <div class="newprod-frame-506344-desktop">
-                            <span class="newprod-callout-fee-text-desktop">Device type / Service fee
-                            </span>
-                        </div>
-                    </div>
-                    <div class="newprod-frame-506353-2-desktop">
-                        <span class="newprod-content-text-field1-desktop" style="width:200px;">
-                            <label id="lblProductCategory"></label>
-                        </span>
-                        <span class="newprod-content-text-field2-desktop">
-                            <label id="lblServiceFee"></label>
-                        </span>
-                    </div>
-                </div>
-            </div>--%>
             <div class="newprod-content-desktop">
                 <div class="newprod-content-highlights-desktop">
-                    What devices are covered?
+                    What's covered?
                
                 </div>
-                <div class="newprod-text-field1-desktop" style="width: 800px;">
-                    <p class="c2"><span class="c3">What devices are covered?</span></p>
-                    <p class="c2"><span class="c4">We cover any make, model, age and size device. Items include:</span></p>
-                    <p class="c2"><span class="c3">Mobile Devices</span></p>
-                    <ul class="c8 lst-kix_ioadaa6x6asu-0 start">
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Laptops</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Tablets</span></li>
-                    </ul>
-                    <p class="c0"><span class="c3"></span></p>
-                    <p class="c2"><span class="c3">Home Office</span></p>
-                    <ul class="c8 lst-kix_ceqdm5uj9axd-0 start">
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Keyboards</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Peripherals</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Printers</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Routers</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Speakers</span></li>
-                    </ul>
-                    <p class="c0"><span class="c3"></span></p>
-                    <p class="c2"><span class="c3">Entertainment</span></p>
-                    <ul class="c8 lst-kix_eo8gb6rr70vs-0 start">
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Bluetooth Speaker</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Gaming Console</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Health &amp; Fitness Tracker</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Remotes</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">SmartWatches</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c4">Soundbars</span></li>
-                    </ul>
-                    <p class="c0"><span class="c3"></span></p>
-                    <p class="c2"><span class="c3">Smart Home</span></p>
-                    <ul class="c8 lst-kix_3oog3u6ga6c2-0 start">
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Smart Doorbells</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Smartlocks</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Smart Security Cameras</span></li>
-                        <li class="c2 c5 li-bullet-0"><span class="c1">Smart Thermostats</span></li>
+                <div class="newprod-text-field1-desktop" style="width: 800px;display:none;" id="divWhatsCoveredHome">
+                    <ul>
+                        <li>Any make, model, customer-owned eligible products; please see Ts & Cs for details
+                            <ul>
+                                <li>Wearables</li>
+                                <li>Home Office</li>
+                                <li>Home Entertainment</li>
+                                <li>Smart Home</li>
+                                <li>Mobile Phones if included in plan</li>
+                            </ul>
+                        </li>
+                        <li>Accidental Damage from Handling (ADH)
+                            <ul>
+                                <li>Drops</li>
+                                <li>Spills</li>
+                                <li>Cracks</li>
+                            </ul>
+                        </li>
+                        <li>Mechanical and Electrical Failure after OEM (Original Equipment Manufacturer) warranty expires</li>
+                        <li>Power surge</li>
                     </ul>
                 </div>
-                <div class="newprod-button-row-desktop" style="position: absolute; top: 980px;">
-                    <div class="button-back-desktop" id="btnFAQBack">
-                        <span class="button-back-text-desktop"><span class="button-back-text-inner-desktop">Back</span></span>
-                    </div>
+                <div class="newprod-text-field1-desktop" style="width: 800px;display:none;" id="divWhatsCoveredPhone">
+                    <ul>
+                        <li>Any make, model, customer-owned or customer-purchased handset</li>
+                        <li>Accidental Damage from Handling (ADH)
+                            <ul>
+                                <li>Drops</li>
+                                <li>Spills</li>
+                                <li>Cracks</li>
+                            </ul>
+                        </li>
+                        <li>Mechanical and Electrical Failure after OEM (Original Equipment Manufacturer) warranty expires</li>
+                        <li>Power surge</li>
+                    </ul>
+                </div>
+                <div class="newprod-text-field1-desktop" style="width: 800px;display:none;" id="divWhatsCoveredCharger">
+                    <ul>
+                        <li>Your make and model of EV charger</li>
+                        <li>Accidental Damage from Handling (ADH)
+                            <ul>
+                                <li>Drops</li>
+                                <li>Spills</li>
+                                <li>Cracks</li>
+                            </ul>
+                        </li>
+                        <li>Mechanical and Electrical Failure after OEM (Original Equipment Manufacturer) warranty expires</li>
+                        <li>Power surge</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="newprod-button-row-desktop" style="position: absolute; top: 400px;">
+                <div class="button-back-desktop" id="btnFAQBack">
+                    <span class="button-back-text-desktop" style="width: 100px;"><span class="button-back-text-inner-desktop" style="width: 100px;">Back to Home</span></span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="my-plan-block-desktop" style="top: 1220px;">
+    <div class="my-plan-block-desktop" style="top: 620px;">
         <div class="my-plan-pinstripe-desktop"></div>
         <div class="my-plan-line-desktop">
             <div class="my-plan-main-desktop">
@@ -109,10 +105,10 @@
                 <label id="lblPlanName">Connected Home Protection</label></span>
         </div>
     </div>
-    <div class="footer-desktop-login" style="top: 1242px;">
+    <div class="footer-desktop-login" style="top: 642px;">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
        
         </div>
     </div>

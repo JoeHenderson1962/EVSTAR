@@ -48,7 +48,7 @@ namespace EVSTAR.DB.NET
                             {
                                 if (category.ClientID > 0)
                                 {
-                                    List<Client> clients = clientHelper.Select(category.ClientID, out errorMsg);
+                                    List<Client> clients = clientHelper.Select(category.ClientID, clientCode, out errorMsg);
                                     if (clients != null && clients.Count > 0)
                                         category.ProductCategoryClient = clients[0];
                                 }

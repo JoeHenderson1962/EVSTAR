@@ -53,7 +53,7 @@ namespace ERPS.api
                 sql.AppendLine("@CardNumber, @ExpDate, @CardCode, @RSCustomerID, @RSContactID, @RSInvoice, @ClaimID, @CustomerID); ");
                 sql.AppendLine("SELECT SCOPE_IDENTITY();");
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection sqlConn = new SqlConnection(constr))
                 {
                     sqlConn.Open();
@@ -108,7 +108,7 @@ namespace ERPS.api
             sql.AppendLine("ClaimID=@ClaimID, CustomerID=@CustomerID ");
             sql.AppendLine("WHERE ID=@ID ");
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(constr))
             {
                 sqlConn.Open();

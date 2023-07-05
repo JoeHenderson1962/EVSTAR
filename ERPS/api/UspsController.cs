@@ -90,7 +90,7 @@ namespace ERPS.api
             User user = null;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -132,7 +132,7 @@ namespace ERPS.api
             User user = null;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -176,97 +176,5 @@ namespace ERPS.api
             }
             return user;
         }
-
-        // POST api/<controller>
-        //public Claim Post([FromBody] Claim value)
-        //{
-        //    Claim claim = null;
-        //    try
-        //    {
-        //        string code = DBHelper.GetStringValue(HttpContext.Current.Request.Params["code"]);
-        //        string email = DBHelper.GetStringValue(HttpContext.Current.Request.Params["address"]);
-        //        string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Params["phone"]);
-        //        string hashed = DBHelper.GetStringValue(HttpContext.Current.Request.Params["hashed"]);
-        //        string provided = Encryption.MD5(code + email);
-        //        if (hashed != provided)
-        //        {
-        //            provided = Encryption.MD5(code + phone);
-        //            if (hashed != provided)
-        //                return null;
-        //        }
-
-        //        claim = value; // (Address)JsonConvert.DeserializeObject(value);  
-        //        if (claim != null)
-        //        {
-        //            if (claim.StatusHistory == null)
-        //            {
-        //                claim.StatusHistory = new List<ClaimStatusHistory>();
-        //            }
-
-        //            if (claim.StatusHistory.Count == 0)
-        //            {
-        //                claim.StatusHistory.Add(new ClaimStatusHistory()
-        //                {
-        //                    StatusID = 1,
-        //                    StatusDate = DateTime.Now,
-        //                    UserName = !String.IsNullOrEmpty(email) ? email : phone,
-        //                    Status = "OPEN"
-        //                });
-        //            }
-
-        //            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
-        //            using (SqlConnection con = new SqlConnection(constr))
-        //            {
-        //                con.Open();
-        //                StringBuilder sql = new StringBuilder();
-        //                sql.AppendLine("INSERT INTO Claims ");
-        //                sql.AppendLine("(CustomerID, CoveredProductID, LocalRepair, AddressID, DateSubmitted, DateCompleted, DateReturnedToCustomer, DateReceivedAtTCS, " +
-        //                    "CoveredPerilID, PasscodeDisabled, PassCode, RepairVendorID, InboundTrackingNumber, OutboundTrackingNumber, PerilSubcategoryID, DenialReason, " +
-        //                    "DateDenied, RepairShoprTicketID, LastUpdated) ");
-        //                sql.AppendLine("VALUES (@CustomerID, @CoveredProductID, @LocalRepair, @AddressID, @DateSubmitted, @DateCompleted, @DateReturnedToCustomer, @DateReceivedAtTCS, " +
-        //                    "@CoveredPerilID, @PasscodeDisabled, @PassCode, @RepairVendorID, @InboundTrackingNumber, @OutboundTrackingNumber, @PerilSubcategoryID, @DenialReason, " +
-        //                    "@DateDenied, @RepairShoprTicketID, @LastUpdated); ");
-        //                sql.AppendLine("SELECT SCOPE_IDENTITY() ");
-        //                using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
-        //                {
-        //                    cmd.CommandType = CommandType.Text;
-        //                    cmd.Parameters.AddWithValue("@CustomerID", claim.CustomerID);
-        //                    cmd.Parameters.AddWithValue("@CoveredPerilID", claim.CoveredPerilID);
-        //                    cmd.Parameters.AddWithValue("@CoveredProductID", claim.CoveredProductID);
-        //                    if (claim.AddressID > 0)
-        //                        cmd.Parameters.AddWithValue("@AddressID", claim.AddressID);
-        //                    else
-        //                        cmd.Parameters.AddWithValue("@AddressID", DBNull.Value);
-        //                    cmd.Parameters.AddWithValue("@DateCompleted", claim.DateCompleted);
-        //                    cmd.Parameters.AddWithValue("@DateReceivedAtTCS", claim.DateReceivedAtTCS);
-        //                    cmd.Parameters.AddWithValue("@DateReturnedToCustomer", claim.DateReturnedToCustomer);
-        //                    cmd.Parameters.AddWithValue("@DateSubmitted", claim.DateSubmitted);
-        //                    cmd.Parameters.AddWithValue("@InboundTrackingNumber", claim.InboundTrackingNumber);
-        //                    cmd.Parameters.AddWithValue("@LocalRepair", claim.LocalRepair);
-        //                    cmd.Parameters.AddWithValue("@OutboundTrackingNumber", claim.OutboundTrackingNumber);
-        //                    cmd.Parameters.AddWithValue("@PassCode", claim.PassCode);
-        //                    cmd.Parameters.AddWithValue("@PasscodeDisabled", claim.PassCodeDisabled);
-        //                    cmd.Parameters.AddWithValue("@RepairVendorID", claim.RepairVendorID);
-        //                    cmd.Parameters.AddWithValue("@PerilSubcategoryID", claim.PerilSubcategoryID);
-        //                    cmd.Parameters.AddWithValue("@DenialReason", claim.DenialReason);
-        //                    cmd.Parameters.AddWithValue("@DateDenied", claim.DateDenied);
-        //                    cmd.Parameters.AddWithValue("@RepairShoprTicketID", claim.RepairShoprTicketID);
-        //                    cmd.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
-        //                    claim.ID = DBHelper.GetInt32Value(cmd.ExecuteScalar());
-        //                    claim.StatusHistory[claim.StatusHistory.Count - 1].ClaimID = claim.ID;
-        //                    claim.StatusHistory[claim.StatusHistory.Count - 1] = SaveClaimStatus(claim.StatusHistory[claim.StatusHistory.Count - 1]);
-        //                }
-        //                con.Close();
-        //            }
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        claim.DenialReason = ex.Message + "\r\n" + ex.StackTrace;
-        //        return claim;
-        //    }
-        //    return claim;
-        //}
     }
 }

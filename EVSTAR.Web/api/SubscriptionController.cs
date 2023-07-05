@@ -37,8 +37,9 @@ namespace EVSTAR.Web.api.reach
                     string[] info = decodedString.Split(':');
                     if (info.Length == 2)
                     {
+                        string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                         UserController uc = new UserController();
-                        User user = uc.AuthenticateUser(info[0], info[1]);
+                        User user = uc.AuthenticateUser(info[0], info[1], clientCode);
                         if (user != null)
                         {
                             if (subscription != null)

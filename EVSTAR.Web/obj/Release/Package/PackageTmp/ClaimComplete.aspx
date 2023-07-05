@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="ClaimComplete.aspx.cs" Inherits="Techcycle.Web.ClaimComplete" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="ClaimComplete.aspx.cs" Inherits="EVSTAR.Web.ClaimComplete" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -48,9 +48,11 @@
                         </div>
                     </div>
                     <div id="divEVSTAR" style="display: none;">
-                        <span class="login-text-input-label-desktop">Thank your for submitting your claim.
-                        A new part or unit will be shipped to the home address you provided. Once we've confirmed delivery of the
-                part or replacement unit, we will contact you to schedule the technician at a time that works for you.</span>
+                        <span class="login-text-input-label-desktop">Thank you for initiating your claim.  A member of our team will contact 
+                            you within one business day to schedule your repair appointment.  You’ll also receive an email with these details.  
+                            If you have any questions, please contact us at <label id="lblProgramPhone">866-772-2111</label>.<br /><br />
+                            Thank you, the EVSTAR Team
+                        </span>
                     </div>
                     <div id="divHomeRepair" style="display: none;">
                         <span class="login-text-input-label-desktop">Thank your for submitting your claim.
@@ -83,7 +85,7 @@
     <div class="footer-desktop-login" style="top: 984px;">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
         </div>
     </div>
 </asp:Content>

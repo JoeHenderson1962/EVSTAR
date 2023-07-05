@@ -36,7 +36,7 @@ namespace ERPS.api
                 string language = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["language"]);
                 string client = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["client"]);
                 string name = DBHelper.GetStringValue(HttpContext.Current.Request.Params["name"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
                 int userID = 0;
                 int customerID = 0;
@@ -459,7 +459,7 @@ namespace ERPS.api
                         result = result.Replace("[CSRSCRIPTCSS]", script2.CssClass);
 
                         CallActionHelper actionHelper = new CallActionHelper();
-                        List<CallAction> actions = actionHelper.Select(0, out errorMsg);
+                        List<CallAction> actions = actionHelper.Select(0, clientCode, out errorMsg);
                         if (string.IsNullOrEmpty(errorMsg))
                         {
                             StringBuilder actionList = new StringBuilder();

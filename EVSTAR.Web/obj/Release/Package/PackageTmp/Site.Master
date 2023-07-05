@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Techcycle.Web.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EVSTAR.Web.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -106,7 +106,7 @@
     <script type="text/javascript" src="Scripts/dialogbox/demo/sunlight-min.js"></script>
     <script type="text/javascript" src="Scripts/dialogbox/demo/sunlight.javascript-min.js"></script>
     <script type="text/javascript" src="Scripts/dialogbox/jquery.dialog.js"></script>
-    <script src="Scripts/tccustomerclaim.a.js"></script>
+    <script src="Scripts/tccustomerclaim.g.js"></script>
     <script src="Content/js/popper.min.js"></script>
     <script src="Content/js/bootstrap.min.js"></script>
     <script src="Content/js/owl.carousel.min.js"></script>

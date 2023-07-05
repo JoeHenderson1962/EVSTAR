@@ -56,7 +56,8 @@ namespace EVSTAR.Web.api
                 HttpClient httpClient = new HttpClient();
                 try
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["client"]);
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -102,108 +103,5 @@ namespace EVSTAR.Web.api
 
             return result;
         }
-
-        //public async Task<Ticket> RetrieveOneTicket(long ticketID)
-        //{
-        //    Ticket result = null;
-        //    if (ticketID > 0)
-        //    {
-        //        string resp = String.Empty;
-        //        HttpClient httpClient = new HttpClient();
-        //        try
-        //        {
-        //            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //            httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ConfigurationManager.AppSettings["RepairShopr"]));
-        //            string apiHost = String.Format("https://techcyclesolutions.repairshopr.com/api/v1/tickets/{0}", ticketID);
-        //            var uri = new Uri(apiHost);
-
-        //            var httpResponseMessage = await httpClient.GetAsync(uri);
-        //            resp = await httpResponseMessage.Content.ReadAsStringAsync();
-        //            resp = resp.Replace("{\"ticket\":", "");
-        //            resp = resp.Substring(0, resp.Length - 1);
-        //            result = JsonConvert.DeserializeObject<Ticket>(resp);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            resp = String.Format("ERROR:\r\n{0}\r\n{1}", ex.Message, ex.StackTrace);
-        //            Ticket tck = new Ticket()
-        //            {
-        //                id = 0,
-        //                subject = resp
-        //            };
-        //            result = tck;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Ticket tck = new Ticket()
-        //        {
-        //            id = 0,
-        //            subject = String.Format("ERROR: Ticket not found ({0})", ticketID)
-        //        };
-        //        result = tck;
-        //    }
-
-        //    return result;
-        //}
-
-        //// POST api/<controller>
-        //public Ticket Post()
-        //{
-        //    Ticket cust_ticket = null;
-        //    string ticket = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["ticket"]);
-        //    var t = Task.Run(() => PostTicket(ticket));
-        //    t.Wait();
-        //    string result = t.Result;
-        //    if (result.Contains("\"success\":false"))
-        //    {
-        //        RepairShoprFailureResponse err = JsonConvert.DeserializeObject<RepairShoprFailureResponse>(result);
-
-        //        return new Ticket()
-        //        {
-        //            id = 0,
-        //            subject = "ERROR: " + err.message[0]
-        //        };
-        //    }
-        //    else if (result.Contains("\"error\":"))
-        //    {
-        //        RepairShoprErrorResponse err = JsonConvert.DeserializeObject<RepairShoprErrorResponse>(result);
-
-        //        return new Ticket()
-        //        {
-        //            id = 0,
-        //            subject = "ERROR: " + err.error
-        //        };
-        //    }
-        //    else
-        //    {
-        //        result = result.Replace("{\"ticket\":", "");
-        //        result = result.Substring(0, result.Length - 1);
-        //        cust_ticket = JsonConvert.DeserializeObject<Ticket>(result);
-        //    }
-        //    return cust_ticket;
-        //}
-
-        //public async Task<string> PostTicket(string ticket)
-        //{
-        //    string resp = String.Empty;
-        //    HttpClient httpClient = new HttpClient();
-        //    try
-        //    {
-        //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        var httpContent = new StringContent(ticket, System.Text.Encoding.UTF8, "application/json");
-        //        httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", ConfigurationManager.AppSettings["RepairShopr"]));
-        //        string apiHost = "https://techcyclesolutions.repairshopr.com/api/v1/tickets";
-        //        var uri = new Uri(apiHost);
-
-        //        var httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
-        //        resp = await httpResponseMessage.Content.ReadAsStringAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        resp = String.Format("ERROR:\r\n{0}\r\n{1}", ex.Message, ex.StackTrace);
-        //    }
-        //    return resp;
-        //}
     }
 }

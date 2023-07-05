@@ -34,7 +34,7 @@ namespace EVSTAR.Web.api
         {
             StringBuilder sb = new StringBuilder();
             string result = string.Empty;
-            string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Params["phone"]);
+            string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["phone"]);
 
             //string auth = HttpContext.Current.Request.Headers["auth"];
             //if (!String.IsNullOrEmpty(auth))

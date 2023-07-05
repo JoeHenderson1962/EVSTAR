@@ -1,0 +1,11 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Techcycle.RepairShopr.API.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Techcycle.RepairShopr.API.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\bin\Release\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\obj\Release\Techcycle.RepairShopr.API.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\obj\Release\Techcycle.RepairShopr.API.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\obj\Release\Techcycle.RepairShopr.API.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\obj\Release\Techcycle.RepairShopr.API.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\Techcycle.RepairShopr.API\obj\Release\Techcycle.RepairShopr.API.pdb

@@ -28,7 +28,7 @@ namespace ERPS.api
                 string errorMsg = string.Empty;   
                 string name = DBHelper.GetStringValue(HttpContext.Current.Request.Params["name"]);
                 int client = DBHelper.GetInt32Value(HttpContext.Current.Request.Params["client"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
                 ScriptHelper scriptHelper = new ScriptHelper();
                 script = scriptHelper.Select(name, 1, client, clientCode, out errorMsg);

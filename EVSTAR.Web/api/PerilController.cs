@@ -25,6 +25,7 @@ namespace EVSTAR.Web.api
             string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["phone"]);
             string hashed = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["hashed"]);
             string category = DBHelper.GetStringValue(HttpContext.Current.Request.Params["category"]);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
             if (Int32.TryParse(category, out int categoryID))
             {
                 string provided = Encryption.MD5(code + address);
@@ -35,7 +36,7 @@ namespace EVSTAR.Web.api
                         return perils;
                 }
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -46,7 +47,7 @@ namespace EVSTAR.Web.api
                     sql.AppendLine("LEFT JOIN Program p WITH(NOLOCK) ON p.ID = c.ProgramID ");
                     sql.AppendLine("LEFT JOIN Client l WITH(NOLOCK) ON l.ID = p.ClientID ");
                     sql.AppendLine("WHERE c.ProductCategoryID=@ProductCategoryID ");
-                    sql.AppendLine("ORDER BY s.ID ");
+                    sql.AppendLine("ORDER BY c.ID, s.ID ");
                     using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
                     {
                         cmd.CommandType = CommandType.Text;

@@ -60,7 +60,7 @@ namespace ERPS.api
                 address = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -100,7 +100,7 @@ namespace ERPS.api
             {
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -155,7 +155,7 @@ namespace ERPS.api
                 address = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -191,7 +191,7 @@ namespace ERPS.api
         {
             Address address = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

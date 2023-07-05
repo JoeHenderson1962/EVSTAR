@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace EVSTAR.Web.ShipService {
+namespace Techcycle.Web.ShipService {
     using System.Diagnostics;
     using System;
     using System.Xml.Serialization;
@@ -43,7 +43,7 @@ namespace EVSTAR.Web.ShipService {
         
         /// <remarks/>
         public ShipService() {
-            this.Url = global::EVSTAR.Web.Properties.Settings.Default.Techcycle_Web_ShipService_ShipService;
+            this.Url = global::Techcycle.Web.Properties.Settings.Default.Techcycle_Web_ShipService_ShipService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

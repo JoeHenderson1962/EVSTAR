@@ -31,10 +31,10 @@ namespace EVSTAR.Web.api
             //    if (hashed != provided)
             //        return clients;
             //}
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["program"]);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
             AddressController ac = new AddressController();
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -55,7 +55,7 @@ namespace EVSTAR.Web.api
                     {
                         Client client = new Client(r);
                         client.MailingAddress = ac.Get(client.AddressID);
-                        client.Fulfillment = GetFulfillmentTypeByID(client.FulfillmentTypeID);
+                        client.Fulfillment = GetFulfillmentTypeByID(client.FulfillmentTypeID, clientCode);
                         clients.Add(client);
                     }
                     r.Close();
@@ -69,7 +69,9 @@ namespace EVSTAR.Web.api
         {
             Client client = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -86,7 +88,7 @@ namespace EVSTAR.Web.api
                         client = new Client(r);
                         AddressController ac = new AddressController();
                         client.MailingAddress = ac.Get(client.AddressID);
-                        client.Fulfillment = GetFulfillmentTypeByID(client.FulfillmentTypeID);
+                        client.Fulfillment = GetFulfillmentTypeByID(client.FulfillmentTypeID, clientCode);
                     }
                     r.Close();
                 }
@@ -128,11 +130,11 @@ namespace EVSTAR.Web.api
             return client;
         }
 
-        private FulfillmentType GetFulfillmentTypeByID(int id)
+        private FulfillmentType GetFulfillmentTypeByID(int id, string clientCode)
         {
             FulfillmentType ft = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

@@ -508,6 +508,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Scripts\claimsadmin.js" />
     <Content Include="WrongAccount.html" />
     <Content Include="AccountNotFound.html" />
     <Content Include="CustomerClaims.html" />

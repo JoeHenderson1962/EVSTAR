@@ -1,9 +1,10 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Techcycle.Web.Login" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="EVSTAR.Web.Login" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
         <img src="Content/circledots_32.gif" style="position: relative; top: 100px; left: 0px;" />
         Please wait...
+   
     </div>
     <div class="header-desktop">
         <div class="header-desktop-inner">
@@ -30,12 +31,13 @@
     <div class="login-block-desktop">
         <div class="login-panel-desktop">
             <div class="login-content-desktop">
-                <div class="login-content-highlights-desktop" id="divLoginWithText">
+                <div class="login-content-highlights-desktop" id="divLoginWithText" style="width: 700px;">
                     Log in with your email address and password.
+               
                 </div>
 
-                <div class="login-content-text-field1-desktop">
-                    <span class="login-text-input-label-desktop" id="loginType">Email<br />
+                <div class="login-content-text-field1-desktop" style="width: 700px;">
+                    <span class="login-text-input-label-desktop" id="loginType" style="width: 700px;">Email<br />
                     </span>
                     <input id="txtLoginEmail" type="text" maxlength="128" class="login-text-input-desktop" />
                     <div class="helper-text-box-desktop">
@@ -43,7 +45,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="login-content-text-field2-desktop">
+                <div class="login-content-text-field2-desktop" style="width: 700px;">
                     <span class="login-text-input-label-desktop">Password<br />
                     </span>
                     <input id="txtLoginPassword" maxlength="50" type="password" class="login-text-input-desktop" />
@@ -56,10 +58,7 @@
                         <span class="button-text-desktop"><span class="button-text-inner-desktop">Login</span></span>
                     </div>
                 </div>
-                <div class="login-button-row-desktop" style="width: 600px; order:4;" id="divDobsonRouter">
-                    <b>For any router issues or questions, please contact Dobson directly at 855.5.DOBSON (855.536.2766).</b>
-            </div>
-        <%--        </div>
+                <%--        </div>
         <div class="row" style="margin-left: 30px; margin-top: 20px; margin-right: 30px;">
             <div class="col-md-12" style="text-align: left; align-content: start;">
                 <p>
@@ -67,8 +66,8 @@
                 </p>
             </div>
         </div>--%>
-    </div>
-    </div>
+            </div>
+        </div>
     </div>
     <div class="my-plan-block-desktop">
         <div class="my-plan-pinstripe-desktop"></div>
@@ -76,13 +75,15 @@
             <div class="my-plan-main-desktop">
                 <span class="my-plan-text-desktop">My plan:</span>
             </div>
-            <span class="my-plan-con-home-desktop"><label id="lblPlanName">Connected Home Protection</label></span>
+            <span class="my-plan-con-home-desktop">
+                <label id="lblPlanName">Connected Home Protection</label></span>
         </div>
     </div>
     <div class="footer-desktop-login">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
+       
         </div>
     </div>
 </asp:Content>

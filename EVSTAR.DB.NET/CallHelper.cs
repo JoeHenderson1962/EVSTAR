@@ -84,7 +84,7 @@ namespace EVSTAR.DB.NET
                             Call call = new Call(r);
                             if (call.ActionID > 0)
                             {
-                                List<CallAction> actions = actionHelper.Select(call.ActionID, out errorMsg);
+                                List<CallAction> actions = actionHelper.Select(call.ActionID, clientCode, out errorMsg);
                                 if (actions != null && actions.Count > 0)
                                 {
                                     call.CallAction = actions[0];
@@ -93,7 +93,7 @@ namespace EVSTAR.DB.NET
                             }
                             if (call.ResultID > 0)
                             {
-                                List<CallResult> callResults = resultHelper.Select(call.ResultID, out errorMsg);
+                                List<CallResult> callResults = resultHelper.Select(call.ResultID, clientCode, out errorMsg);
                                 if (callResults != null && callResults.Count > 0)
                                 {
                                     call.CallResult = callResults[0];
@@ -119,7 +119,7 @@ namespace EVSTAR.DB.NET
                             }
                             if (call.ClientID > 0)
                             {
-                                List<Client> clientResults = clientHelper.Select(call.ClientID, out errorMsg);
+                                List<Client> clientResults = clientHelper.Select(call.ClientID, clientCode, out errorMsg);
                                 if (clientResults != null && clientResults.Count > 0)
                                 {
                                     call.CurrClient = clientResults[0];

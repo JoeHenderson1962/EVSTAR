@@ -22,6 +22,7 @@ namespace EVSTAR.Web.api
         public async Task<Customer> Get()
         {
             Customer customer = new Customer();
+            CustomerLookup customerLookup = new CustomerLookup();
             customer.Result = string.Empty;
 
             string regCode = HttpContext.Current.Request.Headers["regCode"];
@@ -29,8 +30,8 @@ namespace EVSTAR.Web.api
             string email = HttpContext.Current.Request.Headers["email"];
             string password = HttpContext.Current.Request.Headers["password"];
             string login = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["login"]);
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["client"]); // Client Code
-            string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Params["phone"]).Replace("-", "");
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]); // Client Code
+            string phone = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["phone"]).Replace("-", "");
             string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
             try
             {
@@ -39,15 +40,56 @@ namespace EVSTAR.Web.api
                 if (customerId > 0)
                 {
                     customer = ch.Find(string.Empty, string.Empty, string.Empty, customerId, 0, clientCode, out errorMsg);
-                    if (customer == null)
+                    if (!string.IsNullOrEmpty(errorMsg) || customer == null)
                     {
                         customer = new Customer();
-                        customer.Result = "NOTFOUND";
+                        customer.Result = string.IsNullOrEmpty(errorMsg) ? errorMsg : "NOTFOUND";
+                    }
+                }
+                else if (string.IsNullOrEmpty(regCode) && !string.IsNullOrEmpty(password) && (!string.IsNullOrEmpty(email) || !string.IsNullOrEmpty(phone)))
+                {
+                    password = Encryption.MD5(password);
+                    customerLookup = ch.AuthenticateCustomer(email, phone, password, clientCode, out errorMsg);
+                    clientCode = customerLookup.ClientCode;
+                    if (string.IsNullOrEmpty(errorMsg) && customerLookup != null && customerLookup.CustomerID > 0)
+                    {
+                        customer = ch.Select(string.Empty, string.Empty, string.Empty, customerLookup.CustomerID, 0, customerLookup.ClientCode, out errorMsg).FirstOrDefault();
+                    }
+                    else
+                    {
+                        customer = new Customer();
+                        customer.Result = string.IsNullOrEmpty(errorMsg) ? "NOTFOUND: " + errorMsg : "NOTFOUND";
                     }
                 }
                 else if (!string.IsNullOrEmpty(regCode))
                 {
-                    customer = LookupCustomerByCode(regCode, clientCode);
+                    customerLookup = LookupCustomerByCode(regCode, "Techcycle", out errorMsg);
+                    if (!string.IsNullOrEmpty(errorMsg))
+                    {
+                        if (customer == null)
+                            customer = new Customer();
+                        customer.Result = errorMsg;
+                    }
+                    else
+                    {
+                        clientCode = customerLookup.ClientCode;
+                        if (string.IsNullOrEmpty(errorMsg) || customerLookup != null && customerLookup.CustomerID > 0)
+                        {
+                            customer = ch.Select(string.Empty, string.Empty, string.Empty, customerLookup.CustomerID, 0, customerLookup.ClientCode, out errorMsg).FirstOrDefault();
+                            if (!string.IsNullOrEmpty(errorMsg))
+                            {
+                                if (customer == null)
+                                    customer = new Customer();
+                                customer.Result = errorMsg;
+                            }
+                        }
+                        else
+                        {
+                            if (customer == null)
+                                customer = new Customer();
+                            customer.Result = errorMsg;
+                        }
+                    }
                 }
                 else if (String.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 {
@@ -73,8 +115,7 @@ namespace EVSTAR.Web.api
                     else
                         customer = custs[0];
                 }
-
-
+                                
                 if (customer != null && customer.RepairShoprCustomerID == 0 && customer.ID > 0)   // create the customer in RS
                 {
                     // See if the customer is in RepairShopr by email address
@@ -83,12 +124,12 @@ namespace EVSTAR.Web.api
                     if (singleCustomer != null && singleCustomer != null)
                     {
                         customer.RepairShoprCustomerID = singleCustomer.id;
-                        UpdateCustomer(customer, clientCode);
+                        customer = ch.Update(customer, customerLookup.ClientCode, out errorMsg);
                     }
                     else
                     {
-                        ClientController clientController = new ClientController();
-                        Client client = clientController.Get(customer.ClientID);
+                        ClientHelper clientController = new ClientHelper();
+                        Client client = clientController.Select(customer.ClientID, clientCode, out errorMsg).FirstOrDefault();
 
                         RSCustomer rsCustomer = new RSCustomer()
                         {
@@ -112,9 +153,18 @@ namespace EVSTAR.Web.api
                         if (rsCustomer != null)
                         {
                             customer.RepairShoprCustomerID = rsCustomer.id;
-                            UpdateCustomer(customer, clientCode);
+                            customer = ch.Update(customer, clientCode, out errorMsg);
+                            if (customer != null)
+                                customer.Result = errorMsg;
                         }
                     }
+                }
+                else
+                {
+                    if (customer == null)
+                        customer = new Customer();
+                    if (!string.IsNullOrEmpty(errorMsg))
+                        customer.Result = errorMsg;
                 }
                 if (customer != null && customer.Result != "NOTFOUND")
                 {
@@ -138,10 +188,15 @@ namespace EVSTAR.Web.api
                         }
                     }
 
+                    ClientHelper clih = new ClientHelper();
+                    if (customer != null && customer.ClientID > 0 && customer.CustomerClient == null)
+                        customer.CustomerClient = clih.Select(customer.ClientID, clientCode, out errorMsg).FirstOrDefault();
                 }
             }
             catch (Exception ex)
             {
+                if (customer == null)
+                    customer = new Customer();
                 customer.Result = ex.Message;
             }
             return customer;
@@ -154,7 +209,7 @@ namespace EVSTAR.Web.api
             CustomerHelper ch = new CustomerHelper();
             string errorMsg = string.Empty;
             int customerId = id;
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["client"]); // Client Code
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]); // Client Code
             string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
             try
             {
@@ -176,33 +231,33 @@ namespace EVSTAR.Web.api
             return customer;
         }
 
-        private Client FindClientByID(int clientID, string clientCode)
-        {
-            Client client = null;
+        //private Client FindClientByID(int clientID, string clientCode)
+        //{
+        //    Client client = null;
 
-            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                con.Open();
-                StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT * FROM Client WITH(NOLOCK) ");
-                sql.AppendLine("WHERE ID = @ID");
-                using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@ID", clientID);
-                    SqlDataReader r = cmd.ExecuteReader();
-                    if (r.Read())
-                    {
-                        client = new Client(r);
-                    }
-                    r.Close();
-                }
-                con.Close();
-            }
+        //    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
+        //    using (SqlConnection con = new SqlConnection(constr))
+        //    {
+        //        con.Open();
+        //        StringBuilder sql = new StringBuilder();
+        //        sql.AppendLine("SELECT * FROM Client WITH(NOLOCK) ");
+        //        sql.AppendLine("WHERE ID = @ID");
+        //        using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
+        //        {
+        //            cmd.CommandType = CommandType.Text;
+        //            cmd.Parameters.AddWithValue("@ID", clientID);
+        //            SqlDataReader r = cmd.ExecuteReader();
+        //            if (r.Read())
+        //            {
+        //                client = new Client(r);
+        //            }
+        //            r.Close();
+        //        }
+        //        con.Close();
+        //    }
 
-            return client;
-        }
+        //    return client;
+        //}
 
         private EVSTAR.Models.Address FindAddress(int addressID, string clientCode)
         {
@@ -236,7 +291,8 @@ namespace EVSTAR.Web.api
         public async Task<string> Post([FromBody] Customer customer)
         {
             string result = string.Empty;
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["client"]); // Client Code
+            CustomerHelper ch = new CustomerHelper();
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]); // Client Code
             string function = DBHelper.GetStringValue(HttpContext.Current.Request.Params["function"]);
 
             try
@@ -261,7 +317,12 @@ namespace EVSTAR.Web.api
                         }
                         else
                         {
-                            result = RegisterCustomer(cust.ID, Encryption.MD5(password), clientCode);
+                            string errorMsg = "";
+                            CustomerLookup cl = LookupCustomerByCode(cust.SubscriptionID, clientCode, out errorMsg);
+                            if (!string.IsNullOrEmpty(errorMsg))
+                                result = errorMsg;
+                            else
+                                result = RegisterCustomer(cust.ID, cl != null ? cl.ID : 0, Encryption.MD5(password), clientCode);
                         }
                     }
                 }
@@ -304,7 +365,7 @@ namespace EVSTAR.Web.api
                             else
                             {
                                 customer.RepairShoprCustomerID = rsCustomer.id;
-                                result = UpdateCustomer(customer, clientCode);
+                                customer = ch.Update(customer, clientCode, out result);
                             }
                         }
                     }
@@ -347,7 +408,7 @@ namespace EVSTAR.Web.api
                                 customer.RepairShoprCustomerID = rsCustomer.id;
                             }
                         }
-                        result = UpdateCustomer(customer, clientCode);
+                        customer = ch.Update(customer, clientCode, out result);
                     }
                 }
                 else
@@ -397,7 +458,7 @@ namespace EVSTAR.Web.api
                                     if (rsCustomer != null)
                                     {
                                         cust.RepairShoprCustomerID = rsCustomer.id;
-                                        result = UpdateCustomer(cust, clientCode);
+                                        customer = ch.Update(cust, clientCode, out result);
                                     }
 
                                 }
@@ -432,7 +493,7 @@ namespace EVSTAR.Web.api
                 cust.MailingAddress = addressController.Post(cust.MailingAddress);
                 cust.MailingAddressID = cust.MailingAddress.ID;
 
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -474,6 +535,7 @@ namespace EVSTAR.Web.api
         public string Put([FromBody] string value)
         {
             string result = string.Empty;
+            CustomerHelper ch = new CustomerHelper();
             try
             {
                 int id = DBHelper.GetInt32Value(HttpContext.Current.Request.Headers["id"]);
@@ -490,18 +552,21 @@ namespace EVSTAR.Web.api
                 string confirm = HttpContext.Current.Request.Headers["confirm"];
                 string client = HttpContext.Current.Request.Headers["client"];
                 string clientCode = HttpContext.Current.Request.Headers["clientCode"];
+                string function = DBHelper.GetStringValue(HttpContext.Current.Request.Params["function"]);
+                string errorMsg = "";
 
-                Customer cust = LookupCustomerByCode(code, clientCode);
-                if (cust == null)
+                CustomerLookup custLookup = LookupCustomerByCode(code, "Techcycle", out errorMsg);
+                if (custLookup == null)
                 {
                     result = "NOTFOUND";
                 }
-                else if (cust != null && cust.ID != id)
+                else if (custLookup != null && id > 0 && custLookup.CustomerID != id)
                 {
                     result = "MISMATCH";
                 }
                 else
                 {
+                    Customer cust = ch.Select(string.Empty, string.Empty, string.Empty, custLookup.CustomerID, 0, clientCode, out result).FirstOrDefault();
                     cust.StatusCode = "Active";
                     cust.Email = email;
                     cust.MobileNumber = phone;
@@ -540,7 +605,16 @@ namespace EVSTAR.Web.api
                         Line2 = address2
                     };
 
-                    result = UpdateCustomer(cust, clientCode);
+                    ch.Update(cust, clientCode, out result);
+
+                    if (custLookup.StatusCode.ToUpper() != "NEW" && function.ToUpper() == "REGISTER")
+                    {
+                        result = "ALREADYREGISTERED";
+                    }
+                    else
+                    {
+                        result = RegisterCustomer(cust.ID, custLookup.ID, Encryption.MD5(password), clientCode);
+                    }
                 }
                 return result;
             }
@@ -551,103 +625,113 @@ namespace EVSTAR.Web.api
             return result;
         }
 
-        private Customer LookupCustomerByCode(string code, string clientCode)
+        private CustomerLookup LookupCustomerByCode(string code, string clientCode, out string errorMsg)
         {
-            Customer customer = null;
-
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                con.Open();
-                StringBuilder sql = new StringBuilder();
-                sql.AppendLine("SELECT c.* FROM Customer c WITH(NOLOCK) ");
-                sql.AppendLine("WHERE c.SubscriptionID = @Code");
-                using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@Code", code);
-                    SqlDataReader r = cmd.ExecuteReader();
-                    if (r.Read())
-                    {
-                        customer = new Customer(r);
-                        if (customer != null)
-                        if (customer.BillingAddressID > 0)
-                            customer.BillingAddress = FindAddress(customer.BillingAddressID, clientCode);
-                        if (customer.ShippingAddressID > 0)
-                            customer.ShippingAddress = FindAddress(customer.ShippingAddressID, clientCode);
-                        if (customer.MailingAddressID > 0)
-                            customer.MailingAddress = FindAddress(customer.MailingAddressID, clientCode);
-                    }
-                    r.Close();
-                }
-                con.Close();
-            }
-
-            return customer;
-        }
-
-        private string UpdateCustomer(Customer cust, string clientCode)
-        {
-            string result = String.Empty;
-
+            CustomerLookup customer = null;
+            errorMsg = string.Empty;
             try
             {
-                AddressController addressController = new AddressController();
-                cust.BillingAddress = addressController.Post(cust.BillingAddress);
-                cust.BillingAddressID = cust.BillingAddress.ID;
-                cust.ShippingAddress = addressController.Post(cust.ShippingAddress);
-                cust.ShippingAddressID = cust.ShippingAddress.ID;
-                cust.MailingAddress = addressController.Post(cust.MailingAddress);
-                cust.MailingAddressID = cust.MailingAddress.ID;
-
                 string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
                     StringBuilder sql = new StringBuilder();
-                    sql.AppendLine("UPDATE Customer SET PrimaryFirstName=@FirstName, PrimaryLastName=@LastName, ");
-                    sql.AppendLine("PrimaryName=@Name, Authentication=@Password, StatusCode=@StatusCode, Email=@Email, ");
-                    sql.AppendLine("ClientID=@ClientID, BillingAddressID=@BillingAddressID, ShippingAddressID=@ShippingAddressID, ");
-                    sql.AppendLine("MailingAddressID=@MailingAddressID, MobileNumber=@MobileNumber, HomeNumber=@HomeNumber, RepairShoprCustomerID=@RepairShoprCustomerID, ");
-                    sql.AppendLine("LastUpdated=GETDATE() WHERE ID=@id");
-
+                    sql.AppendLine("SELECT c.* FROM CustomerMaster c WITH(NOLOCK) ");
+                    sql.AppendLine("WHERE c.RegistrationCode = @Code");
                     using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@ID", cust.ID);
-                        cmd.Parameters.AddWithValue("@FirstName", cust.PrimaryFirstName);
-                        cmd.Parameters.AddWithValue("@LastName", cust.PrimaryLastName);
-                        cmd.Parameters.AddWithValue("@Name", cust.PrimaryName);
-                        cmd.Parameters.AddWithValue("@Email", cust.Email);
-                        cmd.Parameters.AddWithValue("@ClientID", cust.ClientID);
-                        cmd.Parameters.AddWithValue("@BillingAddressID", cust.BillingAddressID);
-                        cmd.Parameters.AddWithValue("@ShippingAddressID", cust.ShippingAddressID);
-                        cmd.Parameters.AddWithValue("@MailingAddressID", cust.MailingAddressID);
-                        cmd.Parameters.AddWithValue("@MobileNumber", cust.MobileNumber.Replace("-", ""));
-                        cmd.Parameters.AddWithValue("@HomeNumber", cust.HomeNumber.Replace("-", ""));
-                        cmd.Parameters.AddWithValue("@Password", cust.Password);
-                        cmd.Parameters.AddWithValue("@StatusCode", cust.StatusCode);
-                        cmd.Parameters.AddWithValue("@RepairShoprCustomerID", cust.RepairShoprCustomerID);
-                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Code", code);
+                        SqlDataReader r = cmd.ExecuteReader();
+                        if (r.Read())
+                        {
+                            customer = new CustomerLookup(r);
+                        }
+                        r.Close();
                     }
                     con.Close();
-                    result = JsonConvert.SerializeObject(cust);
                 }
             }
             catch (Exception ex)
             {
-                result = String.Format("ERROR: {0}", ex.Message);
+                errorMsg = ex.Message;
             }
-            return result;
+            return customer;
         }
 
-        private string RegisterCustomer(int id, string password, string clientCode)
+        //private string UpdateCustomer(Customer cust, string clientCode)
+        //{
+        //    string result = String.Empty;
+
+        //    try
+        //    {
+        //        AddressHelper addressController = new AddressHelper();
+        //        if (cust.BillingAddress != null && cust.BillingAddress.ID == 0)
+        //            cust.BillingAddress = addressController.Insert(cust.BillingAddress, clientCode, out result);
+        //        else if (cust.BillingAddress != null)
+        //            cust.BillingAddress = addressController.Update(cust.BillingAddress, clientCode, out result);
+        //        cust.BillingAddressID = cust.BillingAddress.ID;
+
+        //        if (cust.ShippingAddress != null && cust.ShippingAddress.ID == 0)
+        //            cust.ShippingAddress = addressController.Insert(cust.ShippingAddress, clientCode, out result);
+        //        else if (cust.ShippingAddress != null)
+        //            cust.ShippingAddress = addressController.Update(cust.ShippingAddress, clientCode, out result);
+        //        cust.ShippingAddressID = cust.ShippingAddress.ID;
+
+        //        if (cust.MailingAddress != null && cust.MailingAddress.ID == 0)
+        //            cust.MailingAddress = addressController.Insert(cust.MailingAddress, clientCode, out result);
+        //        else if (cust.MailingAddress != null)
+        //            cust.MailingAddress = addressController.Update(cust.MailingAddress, clientCode, out result);
+        //        cust.MailingAddressID = cust.MailingAddress.ID;
+
+        //        string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
+        //        using (SqlConnection con = new SqlConnection(constr))
+        //        {
+        //            con.Open();
+        //            StringBuilder sql = new StringBuilder();
+        //            sql.AppendLine("UPDATE Customer SET PrimaryFirstName=@FirstName, PrimaryLastName=@LastName, ");
+        //            sql.AppendLine("PrimaryName=@Name, Authentication=@Password, StatusCode=@StatusCode, Email=@Email, ");
+        //            sql.AppendLine("ClientID=@ClientID, BillingAddressID=@BillingAddressID, ShippingAddressID=@ShippingAddressID, ");
+        //            sql.AppendLine("MailingAddressID=@MailingAddressID, MobileNumber=@MobileNumber, HomeNumber=@HomeNumber, RepairShoprCustomerID=@RepairShoprCustomerID, ");
+        //            sql.AppendLine("LastUpdated=GETDATE() WHERE ID=@id");
+
+        //            using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
+        //            {
+        //                cmd.CommandType = CommandType.Text;
+        //                cmd.Parameters.AddWithValue("@ID", cust.ID);
+        //                cmd.Parameters.AddWithValue("@FirstName", cust.PrimaryFirstName);
+        //                cmd.Parameters.AddWithValue("@LastName", cust.PrimaryLastName);
+        //                cmd.Parameters.AddWithValue("@Name", cust.PrimaryName);
+        //                cmd.Parameters.AddWithValue("@Email", cust.Email);
+        //                cmd.Parameters.AddWithValue("@ClientID", cust.ClientID);
+        //                cmd.Parameters.AddWithValue("@BillingAddressID", cust.BillingAddressID);
+        //                cmd.Parameters.AddWithValue("@ShippingAddressID", cust.ShippingAddressID);
+        //                cmd.Parameters.AddWithValue("@MailingAddressID", cust.MailingAddressID);
+        //                cmd.Parameters.AddWithValue("@MobileNumber", cust.MobileNumber.Replace("-", ""));
+        //                cmd.Parameters.AddWithValue("@HomeNumber", cust.HomeNumber.Replace("-", ""));
+        //                cmd.Parameters.AddWithValue("@Password", cust.Password);
+        //                cmd.Parameters.AddWithValue("@StatusCode", cust.StatusCode);
+        //                cmd.Parameters.AddWithValue("@RepairShoprCustomerID", cust.RepairShoprCustomerID);
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //            con.Close();
+        //            result = JsonConvert.SerializeObject(cust);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        result = String.Format("ERROR: {0}", ex.Message);
+        //    }
+        //    return result;
+        //}
+
+        private string RegisterCustomer(int id, int lookupID, string password, string clientCode)
         {
             string result = password;
 
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["clientCode"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -657,6 +741,22 @@ namespace EVSTAR.Web.api
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@ID", id);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                }
+
+                constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    con.Open();
+                    StringBuilder sql = new StringBuilder();
+                    sql.AppendLine("UPDATE CustomerMaster SET Authentication=@Password, StatusCode='Active' WHERE ID=@id");
+                    using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@ID", lookupID);
                         cmd.Parameters.AddWithValue("@Password", password);
                         cmd.ExecuteNonQuery();
                     }

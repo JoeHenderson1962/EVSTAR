@@ -22,7 +22,7 @@ namespace EVSTAR.Models
         public short FulfillmentType { get; set; }
         public string Coverage { get; set; }
         public short SortOrder { get; set; }
-
+        public bool SerialNumberRequired { get; set; }
         public Client ProductCategoryClient { get; set; }
         public Program ProductCategoryProgram { get; set; }
 
@@ -45,6 +45,7 @@ namespace EVSTAR.Models
             FulfillmentType = 0;
             Coverage = string.Empty;
             SortOrder = 0;
+            SerialNumberRequired = false;
         }
 
         public ProductCategory(SqlDataReader r) : base()
@@ -62,6 +63,7 @@ namespace EVSTAR.Models
             FulfillmentType = DBHelper.GetInt16Value(r["FulfillmentType"]);
             Coverage = DBHelper.GetStringValue(r["Coverage"]);
             SortOrder = DBHelper.GetInt16Value(r["SortOrder"]);
+            SerialNumberRequired = DBHelper.GetBooleanValue(r["SerialNumberRequired"]);
         }
     }
 }

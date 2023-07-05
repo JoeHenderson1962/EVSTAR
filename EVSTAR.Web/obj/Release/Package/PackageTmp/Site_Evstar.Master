@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_Evstar.Master.cs" Inherits="Techcycle.Web.SiteEvstarMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_Evstar.Master.cs" Inherits="EVSTAR.Web.SiteEvstarMaster" ClientIDMode="Static" %>
 
 <!DOCTYPE html>
 
@@ -90,17 +90,17 @@
         <p>&copy; <%: DateTime.Now.Year %> - EVSTAR</p>
     </footer>--%>
 
-    <div id="overlayer"></div>
+<%--    <div id="overlayer"></div>
     <div class="loader">
         <div class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div>--%>
     <script src="Scripts/jquery-ui-1.12.1.js"></script>
     <script type="text/javascript" src="Scripts/dialogbox/demo/sunlight-min.js"></script>
     <script type="text/javascript" src="Scripts/dialogbox/demo/sunlight.javascript-min.js"></script>
     <script type="text/javascript" src="Scripts/dialogbox/jquery.dialog.js"></script>
-    <script src="Scripts/tccustomerclaim.a.js"></script>
+    <script src="Scripts/tccustomerclaim.g.js"></script>
     <script src="Content/js/popper.min.js"></script>
     <script src="Content/js/bootstrap.min.js"></script>
     <script src="Content/js/owl.carousel.min.js"></script>

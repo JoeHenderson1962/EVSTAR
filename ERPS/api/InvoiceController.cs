@@ -74,7 +74,7 @@ namespace ERPS.api
                 invoice = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (invoice != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -134,7 +134,7 @@ namespace ERPS.api
                 invoice = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (invoice != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -177,7 +177,7 @@ namespace ERPS.api
         {
             Invoice invoice = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -205,7 +205,7 @@ namespace ERPS.api
         {
             Invoice invoice = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

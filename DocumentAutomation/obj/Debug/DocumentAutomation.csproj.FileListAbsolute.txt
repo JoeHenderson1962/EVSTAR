@@ -1,0 +1,50 @@
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DobsonProtectionPlanWelcomeEmail.html
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\EVSTARProtectionPlanWelcomeEmail.html
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\F-003-899 Repair complete form.docx
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\F-003-899 Repair complete form.rtf
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\F-003-900 Denial letter.docx
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\F-003-900 Denial letter.rtf
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DocumentAutomation.exe.config
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DocumentAutomation.exe
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DocumentAutomation.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.DB.NET.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.RepairShopr.API.dll
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.DB.NET.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Techcycle.RepairShopr.API.pdb
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.csproj.SuggestedBindingRedirects.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.exe
+C:\Users\jhend\source\repos\TCS\Techcycle.Web.git\RepairShoprAutomation\obj\Debug\DocumentAutomation.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DobsonProtectionPlanWelcomeEmail.html
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\EVSTARProtectionPlanWelcomeEmail.html
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\F-003-899 Repair complete form.docx
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\F-003-899 Repair complete form.rtf
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\F-003-900 Denial letter.docx
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\F-003-900 Denial letter.rtf
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DocumentAutomation.exe.config
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DocumentAutomation.exe
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DocumentAutomation.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.DB.NET.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.Models.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.RepairShopr.API.dll
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.DB.NET.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.Models.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Techcycle.RepairShopr.API.pdb
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.csproj.AssemblyReference.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.csproj.SuggestedBindingRedirects.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.csproj.CoreCompileInputs.cache
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.csproj.CopyComplete
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.exe
+C:\Users\jhend\source\repos\TCS\EVSTAR\DocumentAutomation\obj\Debug\DocumentAutomation.pdb

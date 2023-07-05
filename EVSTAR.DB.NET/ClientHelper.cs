@@ -12,13 +12,13 @@ namespace EVSTAR.DB.NET
 {
     public class ClientHelper
     {
-        public List<Client> Select(int id, out string errorMsg)
+        public List<Client> Select(int id, string clientCode, out string errorMsg)
         {
             List<Client> result = new List<Client>();
             errorMsg = string.Empty;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();

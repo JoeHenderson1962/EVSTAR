@@ -38,6 +38,10 @@ namespace EVSTAR.Models
         public DateTime? DateAgreedToWaiver { get; set; }
         public int ParentID { get; set; }
         public short NumClaimsLast12Months { get; set; }
+        public Client CustomerClient { get; set; }
+        public DateTime? CancellationDate { get; set; }
+
+        public string AIGContractNumber { get; set; }
 
         public Customer()
         {
@@ -68,6 +72,9 @@ namespace EVSTAR.Models
             DateAgreedToWaiver = null;
             ParentID = 0;
             NumClaimsLast12Months = 0;
+            CustomerClient = new Client();
+            CancellationDate = null;
+            AIGContractNumber = string.Empty;
         }
 
         public Customer(SqlDataReader r) : base()
@@ -90,6 +97,7 @@ namespace EVSTAR.Models
             StatusCode = DBHelper.GetStringValue(r["StatusCode"]);
             EnrollmentDate = DBHelper.GetDateTimeValue(r["EnrollmentDate"]);
             DateSubscriptionEmailSent = DBHelper.GetDateTimeValue(r["DateSubscriptionEmailSent"]);
+            CancellationDate = DBHelper.GetNullableDateTimeValue(r["CancellationDate"]);
             CompanyName = DBHelper.GetStringValue(r["CompanyName"]);
             try
             {
@@ -100,10 +108,11 @@ namespace EVSTAR.Models
                 Password = DBHelper.GetStringValue(r["Authentication"]);
             }
             ProgramID = DBHelper.GetInt32Value(r["ProgramID"]);
-            WarrantyProgram = new Program();
+            //WarrantyProgram = new Program();
             RepairShoprCustomerID = DBHelper.GetInt64Value(r["RepairShoprCustomerID"]);
             DateAgreedToWaiver = DBHelper.GetDateTimeValue(r["DateAgreedToWaiver"]);
             ParentID = DBHelper.GetInt32Value(r["ParentID"]);
+            AIGContractNumber = string.Empty;
         }
     }
 }

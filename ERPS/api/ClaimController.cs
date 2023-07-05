@@ -37,7 +37,7 @@ namespace ERPS.api
                     if (hashed != provided)
                         return claims;
                 }
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 claims = GetClaimsForCustomer(customerID, clientCode);
                 List<Claim> openClaims = new List<Claim>();
                 if (op.ToLower() == "open")
@@ -142,7 +142,7 @@ namespace ERPS.api
                     if (hashed != provided)
                         return claim;
                 }
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 claim = GetClaim(id, clientCode);
             }
             catch (Exception ex)
@@ -169,7 +169,7 @@ namespace ERPS.api
                         return null;
                 }
 
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 claim = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (claim != null && claim.CustomerID > 0 && claim.CoverageID > 0 && claim.CoveredProductID > 0)
                 {
@@ -203,7 +203,7 @@ namespace ERPS.api
                     if (hashed != provided)
                         return null;
                 }
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
 
                 claim = value; // (Address)JsonConvert.DeserializeObject(value);  
                 string errorMsg = string.Empty;
@@ -268,11 +268,11 @@ namespace ERPS.api
         //    return status;
         //}
 
-        private Claim GetClaim(int claimID, string statusCode)
+        private Claim GetClaim(int claimID, string clientCode)
         {
             Claim claim = null;
 
-            string constr = ConfigurationManager.ConnectionStrings[statusCode].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

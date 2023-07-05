@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="CollectPayment.aspx.cs" Inherits="Techcycle.Web.CollectPayment" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="CollectPayment.aspx.cs" Inherits="EVSTAR.Web.CollectPayment" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -47,7 +47,7 @@
                     </span>
                     <input type="text" id="txtCardName" maxlength="100" style="width: 100%;" />
                 </div>
-                <div class="login-content-text-field2-desktop" style="height: 81px; width: 100%;">
+<%--                <div class="login-content-text-field2-desktop" style="height: 81px; width: 100%;">
                     <span class="login-text-input-label-desktop" style="width: 100%;">Credit Card Type:
                     </span>
                     <div class="dropdown-container-desktop">
@@ -58,7 +58,7 @@
                             <option value="DISC">Discover</option>
                         </select>
                     </div>
-                </div>
+                </div>--%>
                 <div class="login-content-text-field2-desktop" style="order: 2; height: 61px; width: 100%;">
                     <span class="login-text-input-label-desktop" style="width: 100%;">Credit Card Number
                     </span>
@@ -109,7 +109,7 @@
     <div class="footer-desktop-login" style="top: 984px;">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
         </div>
     </div>
 </asp:Content>

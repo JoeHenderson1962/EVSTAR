@@ -28,7 +28,7 @@ namespace ERPS.api.reach
             try
             {
                 string authorization = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["Authorization"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 string[] parts = authorization.Split(' ');
                 if (parts.Length == 2)
                 {

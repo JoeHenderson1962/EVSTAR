@@ -15,5 +15,10 @@ namespace EVSTAR.Web
         {
             Page.Title = "User Maintenance";
         }
+
+        protected void btnMyClaims_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Claims.aspx");
+        }
     }
 }

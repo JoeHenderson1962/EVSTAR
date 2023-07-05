@@ -36,14 +36,14 @@ namespace ERPS.api
                     return products;
             }
 
-            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
             string errorMsg = string.Empty;
             CoveredProductHelper cph = new CoveredProductHelper();
-            products = cph.Select(0, clientCode, out errorMsg);
+            products = cph.Select(0, 0, clientCode, out errorMsg);
             if (products != null && customerID > 0)
                 products = products.Where(x => x.CustomerID == customerID).ToList();
 
-            //string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            //string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             //using (SqlConnection con = new SqlConnection(constr))
             //{
             //    con.Open();
@@ -90,7 +90,7 @@ namespace ERPS.api
                     return product;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -137,7 +137,7 @@ namespace ERPS.api
                 CoveredProduct product = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (product != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -184,7 +184,7 @@ namespace ERPS.api
                 CoveredProduct product = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (product != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();

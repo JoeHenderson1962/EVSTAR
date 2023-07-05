@@ -31,9 +31,10 @@ namespace EVSTAR.Web.api
             //    if (hashed != provided)
             //        return clients;
             //}
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
             string programCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["program"]);
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -53,7 +54,7 @@ namespace EVSTAR.Web.api
                     while (r.Read())
                     {
                         Program program = new Program(r);
-                        program.ProgramFulfillmentType = GetFulfillmentTypeByID(program.FulfillmentTypeID);
+                        program.ProgramFulfillmentType = GetFulfillmentTypeByID(program.FulfillmentTypeID, clientCode);
                         programs.Add(program);
                     }
                     r.Close();
@@ -67,7 +68,8 @@ namespace EVSTAR.Web.api
         {
             Program program = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();
@@ -82,7 +84,7 @@ namespace EVSTAR.Web.api
                     if (r.Read())
                     {
                         program = new Program(r);
-                        program.ProgramFulfillmentType = GetFulfillmentTypeByID(program.FulfillmentTypeID);
+                        program.ProgramFulfillmentType = GetFulfillmentTypeByID(program.FulfillmentTypeID, clientCode);
                     }
                     r.Close();
                 }
@@ -91,11 +93,11 @@ namespace EVSTAR.Web.api
             return program;
         }
 
-        private FulfillmentType GetFulfillmentTypeByID(int id)
+        private FulfillmentType GetFulfillmentTypeByID(int id, string clientCode)
         {
             FulfillmentType ft = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

@@ -13,7 +13,7 @@ namespace EVSTAR.DB.NET
 {
     public class CoveredProductHelper
     {
-        public List<CoveredProduct> Select(int id, string clientCode, out string errorMsg)
+        public List<CoveredProduct> Select(int id, int customerID, string clientCode, out string errorMsg)
         {
             List<CoveredProduct> result = new List<CoveredProduct>();
 
@@ -33,7 +33,8 @@ namespace EVSTAR.DB.NET
                     sql.AppendLine("LEFT JOIN ProductCategories pc WITH(NOLOCK) ON pc.ID = cp.ProductCategoryID ");
                     if (id > 0)
                         sql.AppendLine("WHERE cp.ID=@ID ");
-
+                    if (customerID > 0)
+                        sql.AppendLine("WHERE cp.CustomerID=@CustomerID ");
                     sql.AppendLine("ORDER BY cp.ID DESC");
 
                     using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
@@ -41,6 +42,8 @@ namespace EVSTAR.DB.NET
                         cmd.CommandType = CommandType.Text;
                         if (id > 0)
                             cmd.Parameters.AddWithValue("@ID", id);
+                        if (customerID > 0)
+                            cmd.Parameters.AddWithValue("@CustomerID", customerID);
 
                         SqlDataReader r = cmd.ExecuteReader();
                         while (r.Read())

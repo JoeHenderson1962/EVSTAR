@@ -45,7 +45,7 @@ namespace EVSTAR.DB.NET
                             programs.Add(program);
 
                             ClientHelper ch = new ClientHelper();
-                            List<Client> clients = ch.Select(program.ClientID, out errorMsg);
+                            List<Client> clients = ch.Select(program.ClientID, clientCode, out errorMsg);
                             if (clients != null && clients.Count > 0)
                             {
                                 program.ProgramClient = clients[0];

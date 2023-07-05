@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using System.Configuration;
 
-namespace CODi.EVSTAR.Web
+namespace EVSTAR.Web
 {
     public partial class Claims : System.Web.UI.Page
     {

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EVSTAR.api.props" />
+</Project>

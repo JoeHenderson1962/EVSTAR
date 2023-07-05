@@ -15,12 +15,12 @@ namespace EVSTAR.Web
     {
 
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// btnMyClaims control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::System.Web.UI.WebControls.Button btnMyClaims;
     }
 }

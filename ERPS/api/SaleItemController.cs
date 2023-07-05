@@ -56,7 +56,7 @@ namespace ERPS.api
                 HttpClient httpClient = new HttpClient();
                 try
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["REACH"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();

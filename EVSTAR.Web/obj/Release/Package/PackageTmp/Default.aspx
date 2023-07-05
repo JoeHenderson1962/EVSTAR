@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Techcycle.Web.Dobson" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site_Evstar.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="EVSTAR.Web.Dobson" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divWait" style="width: 100%; height: 100%; background-color: gray; opacity: 0.5; display: none; text-align: center; vertical-align: middle; font-size: 18pt; position: absolute; top: 0px; left: 0px; z-index: 200; color: white;">
@@ -33,7 +33,7 @@
         <div class="left-box-desktop">
             <div class="hero-textbox-desktop">
                 <div class="connected-home-prot-desktop">
-                    <label id="lblPlanName"><label id="lblPlanName">CONNECTED HOME PROTECTION</label></label>
+                    <label id="lblPlanName">CONNECTED HOME PROTECTION</label>
                 </div>
                 <div class="hi-textbox-desktop">
                     Hi. How can we help you?
@@ -41,10 +41,10 @@
                 <div id="btnRegisterProduct" class="btn register-button-desktop">
                     <span class="register-button-content-desktop">
                         <i class="fa-regular fa-square-check"></i></span>
-                    <span class="register-button-text-desktop">
-                        <span class="register-text-desktop">Register a product
-                        </span>
-                    </span>
+                    <div class="register-button-text-desktop">
+                        <div class="register-text-desktop" id="btnRegisterProductText">Register a product
+                        </div>
+                    </div>
                 </div>
                 <div id="btnNewClaim" class="btn file-button-desktop">
                     <span class="file-button-text-desktop">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="lnk reg-code-link-desktop">
-                <div class="reg-code-link-inner-desktop">
+                <div class="reg-code-link-inner-desktop" id="lnkRegistrationCode">
                     <div class="reg-code-link-placeholder-desktop">
                         <span class="reg-code-link-icon-desktop">
                             <i class="fa-regular fa-envelope-open"></i>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <span class="callout-text-desktop">With a quick few steps, you'll be able to log in. Once you're logged in, 
-                    you can register and view your products.
+                    you can view your account.
                 </span>
             </div>
             <div class="callout2-desktop">
@@ -161,7 +161,7 @@
     <div class="footer-desktop">
         <img src="Content/images/evstar-logo-white-small.png" alt="EVSTAR" class="footer-logo-desktop" />
         <div class="footer-copyright">
-            EVSTAR &copy; 2022
+            EVSTAR &copy; 2023
         </div>
     </div>
 </asp:Content>

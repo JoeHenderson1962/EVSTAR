@@ -27,7 +27,7 @@ namespace ERPS.api
                 int category = DBHelper.GetInt32Value(HttpContext.Current.Request.Headers["category"]);
                 int id = DBHelper.GetInt32Value(HttpContext.Current.Request.Headers["id"]);
                 string program = DBHelper.GetStringValue(HttpContext.Current.Request.Params["program"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 string errorMsg = string.Empty;
                 perils = cph.Select(id, category, program, clientCode, out errorMsg);
 
@@ -52,7 +52,7 @@ namespace ERPS.api
             {
                 int category = DBHelper.GetInt32Value(HttpContext.Current.Request.Headers["category"]);
                 string program = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["program"]);
-                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Params["clientCode"]);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 string errorMsg = string.Empty;
                 perils = cph.SelectFull(id, category, program, clientCode, out errorMsg);
 

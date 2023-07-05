@@ -31,7 +31,8 @@ namespace EVSTAR.Web.api
                     if (hashed != provided)
                         return address;
                 }
-                address = GetAddress(id);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+                address = GetAddress(id, clientCode);
             }
             catch (Exception ex)
             {
@@ -57,10 +58,11 @@ namespace EVSTAR.Web.api
                 //        return null;
                 //}
 
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 address = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -93,14 +95,14 @@ namespace EVSTAR.Web.api
             return address;
         }
 
-        private Address InsertAddress(Address address, out string errorMsg)
+        private Address InsertAddress(Address address, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -152,10 +154,11 @@ namespace EVSTAR.Web.api
                 //        return null;
                 //}
 
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
                 address = value; // (Address)JsonConvert.DeserializeObject(value);  
                 if (address != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -187,11 +190,11 @@ namespace EVSTAR.Web.api
             return address;
         }
 
-        private Address GetAddress(int addressID)
+        private Address GetAddress(int addressID, string clientCode)
         {
             Address address = null;
 
-            string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 con.Open();

@@ -22,7 +22,8 @@ namespace EVSTAR.Web.api
             {
                 string username = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["username"]);
                 string authentication = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["auth"]);
-                return AuthenticateUser(username, authentication);
+                string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
+                return AuthenticateUser(username, authentication, clientCode);
             }
             catch (Exception ex)
             {
@@ -34,12 +35,12 @@ namespace EVSTAR.Web.api
             return user;
         }
 
-        public User AuthenticateUser(string username, string auth)
+        public User AuthenticateUser(string username, string auth, string clientCode)
         {
             User user = null;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -76,12 +77,12 @@ namespace EVSTAR.Web.api
             return user;
         }
 
-        private User GetUser(int id)
+        private User GetUser(int id, string clientCode)
         {
             User user = null;
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
@@ -116,9 +117,10 @@ namespace EVSTAR.Web.api
         public User Get(int id)
         {
             User user = null;
+            string clientCode = DBHelper.GetStringValue(HttpContext.Current.Request.Headers["clientCode"]);
             try
             {
-                user = GetUser(id);
+                user = GetUser(id, clientCode);
             }
             catch (Exception ex)
             {

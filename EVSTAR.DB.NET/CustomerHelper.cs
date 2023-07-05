@@ -12,7 +12,7 @@ namespace EVSTAR.DB.NET
 {
     public class CustomerHelper
     {
-        public CustomerLookup AuthenticateCustomer(string email, string mdn, string password, out string errorMsg)
+        public CustomerLookup AuthenticateCustomer(string email, string mdn, string password, string clientCode, out string errorMsg)
         {
             CustomerLookup customer = new CustomerLookup();
             errorMsg = string.Empty;
@@ -26,13 +26,13 @@ namespace EVSTAR.DB.NET
                     sql.AppendLine("SELECT * FROM CustomerMaster WITH(NOLOCK) ");
 
                     if (!string.IsNullOrEmpty(email))
-                        sql.AppendLine("WHERE Email=@Email ");
-
-                    if (!string.IsNullOrEmpty(mdn))
-                        sql.AppendLine("WHERE MobileNumber=@MDN ");
+                        sql.AppendLine("WHERE (Email=@Email OR MobileNumber=@MDN) ");
 
                     if (!string.IsNullOrEmpty(password))
-                        sql.AppendLine("AND Authentication=@Authentication");
+                        sql.AppendLine("AND Authentication=@Authentication ");
+
+                    if (!string.IsNullOrEmpty(clientCode))
+                        sql.AppendLine("AND (ClientCode=@ClientCode OR @ClientCode='' OR @ClientCode='TechCycle') ");
 
                     sql.AppendLine("ORDER BY ID DESC");
 
@@ -41,16 +41,17 @@ namespace EVSTAR.DB.NET
                         cmd.CommandType = CommandType.Text;
 
                         if (!string.IsNullOrEmpty(email))
+                        {
                             cmd.Parameters.AddWithValue("@Email", email);
+
+                            cmd.Parameters.AddWithValue("@MDN", mdn);
+                        }
+                        if (!string.IsNullOrEmpty(clientCode))
+                            cmd.Parameters.AddWithValue("@ClientCode", clientCode);
 
                         if (!string.IsNullOrEmpty(password))
                             cmd.Parameters.AddWithValue("@Authentication", password);
 
-                        if (!string.IsNullOrEmpty(mdn))
-                            cmd.Parameters.AddWithValue("@MDN", mdn);
-
-                        AddressHelper addressHelper = new AddressHelper();
-                        ProgramHelper programHelper = new ProgramHelper();
                         SqlDataReader r = cmd.ExecuteReader();
                         if (r.Read())
                         {
@@ -122,19 +123,19 @@ namespace EVSTAR.DB.NET
                             Customer customer = new Customer(r);
                             if (customer.BillingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(customer.BillingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(customer.BillingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     customer.BillingAddress = addresses[0];
                             }
                             if (customer.ShippingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(customer.ShippingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(customer.ShippingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     customer.ShippingAddress = addresses[0];
                             }
                             if (customer.MailingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(customer.MailingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(customer.MailingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     customer.MailingAddress = addresses[0];
                             }
@@ -144,6 +145,9 @@ namespace EVSTAR.DB.NET
                                 if (programs != null && programs.Count > 0)
                                     customer.WarrantyProgram = programs[0];
                             }
+
+                            ClientHelper clih = new ClientHelper();
+                            customer.CustomerClient = clih.Select(customer.ClientID, clientCode, out errorMsg).FirstOrDefault();
                             result.Add(customer);
                         }
                         r.Close();
@@ -215,19 +219,19 @@ namespace EVSTAR.DB.NET
                             result = new Customer(r);
                             if (result.BillingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(result.BillingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(result.BillingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     result.BillingAddress = addresses[0];
                             }
                             if (result.ShippingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(result.ShippingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(result.ShippingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     result.ShippingAddress = addresses[0];
                             }
                             if (result.MailingAddressID > 0)
                             {
-                                List<Address> addresses = addressHelper.Select(result.MailingAddressID, out errorMsg);
+                                List<Address> addresses = addressHelper.Select(result.MailingAddressID, clientCode, out errorMsg);
                                 if (addresses != null && addresses.Count > 0)
                                     result.MailingAddress = addresses[0];
                             }
@@ -237,6 +241,9 @@ namespace EVSTAR.DB.NET
                                 if (programs != null && programs.Count > 0)
                                     result.WarrantyProgram = programs[0];
                             }
+
+                            ClientHelper clih = new ClientHelper();
+                            result.CustomerClient = clih.Select(result.ClientID, clientCode, out errorMsg).FirstOrDefault();
                         }
                         r.Close();
                     }
@@ -295,7 +302,7 @@ namespace EVSTAR.DB.NET
                                     customer.WarrantyProgram = programs[0];
                             }
                         }
-                        else
+                        else if (customer != null)
                             customer.Result = "NOTFOUND";
                         r.Close();
                     }
@@ -309,14 +316,14 @@ namespace EVSTAR.DB.NET
             return customer;
         }
 
-        public Customer Insert(Customer customer, out string errorMsg)
+        public Customer Insert(Customer customer, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
                 if (customer != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -324,11 +331,13 @@ namespace EVSTAR.DB.NET
                         sql.AppendLine("INSERT INTO Customer ");
                         sql.AppendLine("(ClientID, MobileNumber, HomeNumber, PrimaryName, AuthorizedName, BillingAddressID, ShippingAddressID, MailingAddressID, ");
                         sql.AppendLine("Email, PrimaryFirstName, PrimaryLastName, AccountNumber, SequenceNumber, SubscriptionID, StatusCode, EnrollmentDate, ");
-                        sql.AppendLine("CompanyName, Authentication, DateSubscriptionEmailSent, ProgramID, RepairShoprCustomerID, LastUpdated, DateAgreedToWaiver, ParentID)");
+                        sql.AppendLine("CompanyName, Authentication, DateSubscriptionEmailSent, ProgramID, RepairShoprCustomerID, LastUpdated, DateAgreedToWaiver, ParentID, ");
+                        sql.AppendLine("AIGContractNumber, CancellationDate) ");
                         sql.AppendLine("VALUES ");
                         sql.AppendLine("(@ClientID, @MobileNumber, @HomeNumber, @PrimaryName, @AuthorizedName, @BillingAddressID, @ShippingAddressID, @MailingAddressID, ");
                         sql.AppendLine("@Email, @PrimaryFirstName, @PrimaryLastName, @AccountNumber, @SequenceNumber, @SubscriptionID, @StatusCode, @EnrollmentDate, ");
-                        sql.AppendLine("@CompanyName, @Password, @DateSubscriptionEmailSent, @ProgramID, @RepairShoprCustomerID, @LastUpdated, @DateAgreedToWaiver, @ParentID); ");
+                        sql.AppendLine("@CompanyName, @Authentication, @DateSubscriptionEmailSent, @ProgramID, @RepairShoprCustomerID, @LastUpdated, @DateAgreedToWaiver, @ParentID, ");
+                        sql.AppendLine("@AIGContractNumber, @CancellationDate); ");
                         sql.AppendLine("SELECT SCOPE_IDENTITY() ");
                         using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
                         {
@@ -350,14 +359,43 @@ namespace EVSTAR.DB.NET
                             cmd.Parameters.AddWithValue("@StatusCode", customer.StatusCode);
                             cmd.Parameters.AddWithValue("@EnrollmentDate", customer.EnrollmentDate);
                             cmd.Parameters.AddWithValue("@CompanyName", customer.CompanyName);
-                            cmd.Parameters.AddWithValue("@Password", customer.Password);
+                            cmd.Parameters.AddWithValue("@Authentication", customer.Password);
                             cmd.Parameters.AddWithValue("@DateSubscriptionEmailSent", DBNull.Value);
                             cmd.Parameters.AddWithValue("@ProgramID", customer.ProgramID);
                             cmd.Parameters.AddWithValue("@RepairShoprCustomerID", customer.RepairShoprCustomerID);
                             cmd.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
                             cmd.Parameters.AddWithValue("@DateAgreedToWaiver", DBNull.Value);
                             cmd.Parameters.AddWithValue("@ParentID", DBNull.Value);
+                            cmd.Parameters.AddWithValue("@AIGContractNumber", customer.AIGContractNumber);
+                            cmd.Parameters.AddWithValue("@CancellationDate", DBNull.Value);
                             customer.ID = DBHelper.GetInt32Value(cmd.ExecuteScalar());
+                        }
+                        con.Close();
+                    }
+
+                    // Insert into the CustomerMaster table
+                    constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    using (SqlConnection con = new SqlConnection(constr))
+                    {
+                        con.Open();
+                        StringBuilder sql = new StringBuilder();
+                        sql.AppendLine("INSERT INTO CustomerMaster ");
+                        sql.AppendLine("(Email, MobileNumber, PrimaryFirstName, PrimaryLastName, ClientCode, RegistrationCode, StatusCode, CustomerID) ");
+                        sql.AppendLine("VALUES ");
+                        sql.AppendLine("(@Email, @MobileNumber, @PrimaryFirstName, @PrimaryLastName, @ClientCode, @RegistrationCode, @StatusCode, @CustomerID); ");
+                        sql.AppendLine("SELECT SCOPE_IDENTITY() ");
+                        using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
+                        {
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@Email", customer.Email);
+                            cmd.Parameters.AddWithValue("@MobileNumber", customer.MobileNumber);
+                            cmd.Parameters.AddWithValue("@PrimaryFirstName", customer.PrimaryFirstName);
+                            cmd.Parameters.AddWithValue("@PrimaryLastName", customer.PrimaryLastName);
+                            cmd.Parameters.AddWithValue("@ClientCode", clientCode);
+                            cmd.Parameters.AddWithValue("@RegistrationCode", customer.SubscriptionID);
+                            cmd.Parameters.AddWithValue("@StatusCode", customer.StatusCode);
+                            cmd.Parameters.AddWithValue("@CustomerID", customer.ID);
+                            int id = DBHelper.GetInt32Value(cmd.ExecuteScalar());
                         }
                         con.Close();
                     }
@@ -372,14 +410,14 @@ namespace EVSTAR.DB.NET
             return customer;
         }
 
-        public Customer Update(Customer customer, out string errorMsg)
+        public Customer Update(Customer customer, string clientCode, out string errorMsg)
         {
             errorMsg = string.Empty;
             try
             {
                 if (customer != null)
                 {
-                    string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         con.Open();
@@ -390,7 +428,8 @@ namespace EVSTAR.DB.NET
                         sql.AppendLine("Email=@Email, PrimaryFirstName=@PrimaryFirstName, PrimaryLastName=@PrimaryLastName, AccountNumber=@AccountNumber, ");
                         sql.AppendLine("SequenceNumber=@SequenceNumber, SubscriptionID=@SubscriptionID, StatusCode=@StatusCode, EnrollmentDate=@EnrollmentDate, ");
                         sql.AppendLine("CompanyName=@CompanyName, Authentication=@Password, DateSubscriptionEmailSent=@DateSubscriptionEmailSent, ProgramID=@ProgramID, ");
-                        sql.AppendLine("RepairShoprCustomerID=@RepairShoprCustomerID, LastUpdated=@LastUpdated, DateAgreedToWaiver=@DateAgreedToWaiver, ParentID=@ParentID ");
+                        sql.AppendLine("RepairShoprCustomerID=@RepairShoprCustomerID, LastUpdated=@LastUpdated, DateAgreedToWaiver=@DateAgreedToWaiver, ParentID=@ParentID, ");
+                        sql.AppendLine("AIGContractNumber=@AIGContractNumber, CancellationDate=@CancellationDate");
                         sql.AppendLine("WHERE ID=@ID");
 
                         using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
@@ -427,6 +466,11 @@ namespace EVSTAR.DB.NET
                             cmd.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
                             cmd.Parameters.AddWithValue("@DateAgreedToWaiver", DBNull.Value);
                             cmd.Parameters.AddWithValue("@ParentID", customer.ParentID);
+                            cmd.Parameters.AddWithValue("@AIGContractNumber", customer.AIGContractNumber);
+                            if (customer.CancellationDate != null && customer.CancellationDate.HasValue)
+                                cmd.Parameters.AddWithValue("@CancellationDate", customer.CancellationDate);
+                            else
+                                cmd.Parameters.AddWithValue("@CancellationDate", DBNull.Value);
                             int i = cmd.ExecuteNonQuery();
                             Console.WriteLine("{0} records updated.", i);
                         }
@@ -487,7 +531,7 @@ namespace EVSTAR.DB.NET
             return result;
         }
 
-        public Customer SelectByClientAndAccountNumber(int clientID, string accountNumber, string clientCode, out string error)
+        public Customer SelectByClientAndAccountNumber(int clientID, string accountNumber, DateTime? enrollmentDate, string clientCode, out string error)
         {
             Customer result = null;
             error = string.Empty;
@@ -500,18 +544,43 @@ namespace EVSTAR.DB.NET
                     StringBuilder sql = new StringBuilder();
                     sql.AppendLine("SELECT * FROM Customer WITH(NOLOCK) ");
                     sql.AppendLine("WHERE ClientID=@ClientID ");
-                    sql.AppendLine("AND AccountNumber=@AccountNumber");
+                    sql.AppendLine("AND RIGHT('000000000'+CAST(AccountNumber AS VARCHAR(9)),9)=@AccountNumber ");
+                    if (enrollmentDate != null && enrollmentDate.HasValue)
+                    {
+                        sql.AppendLine("AND EnrollmentDate=@EnrollmentDate ");
+                    }
                     using (SqlCommand cmd = new SqlCommand(sql.ToString(), con))
                     {
                         cmd.CommandType = CommandType.Text;
                         cmd.Parameters.AddWithValue("@ClientID", clientID);
                         cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                        if (enrollmentDate != null && enrollmentDate.HasValue) 
+                        {
+                            cmd.Parameters.AddWithValue("@EnrollmentDate", enrollmentDate.Value);
+                        }
                         SqlDataReader r = cmd.ExecuteReader();
                         if (r.Read())
                         {
                             result = new Customer(r);
                         }
                         r.Close();
+
+                        if (result == null)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@ClientID", clientID);
+                            cmd.Parameters.AddWithValue("@AccountNumber", Convert.ToInt64(accountNumber).ToString());
+                            if (enrollmentDate != null && enrollmentDate.HasValue)
+                            {
+                                cmd.Parameters.AddWithValue("@EnrollmentDate", enrollmentDate.Value);
+                            }
+                            r = cmd.ExecuteReader();
+                            if (r.Read())
+                            {
+                                result = new Customer(r);
+                            }
+                            r.Close();
+                        }
                     }
                 }
             }

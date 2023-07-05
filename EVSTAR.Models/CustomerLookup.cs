@@ -16,6 +16,7 @@ namespace EVSTAR.Models
         public string RegistrationCode { get; set; }
         public string ClientCode { get; set; }
         public string Authentication { get; set; }
+        public string StatusCode { get; set; }
         public int CustomerID { get; set; }
 
         public CustomerLookup()
@@ -28,6 +29,7 @@ namespace EVSTAR.Models
             ClientCode = string.Empty;
             Authentication = string.Empty;
             CustomerID = 0;
+            StatusCode = String.Empty;
         }
 
         public CustomerLookup(SqlDataReader r) : base()
@@ -38,6 +40,7 @@ namespace EVSTAR.Models
             PrimaryLastName = DBHelper.GetStringValue(r["PrimaryLastName"]);
             Email = DBHelper.GetStringValue(r["Email"]);
             ClientCode = DBHelper.GetStringValue(r["ClientCode"]);
+            StatusCode = DBHelper.GetStringValue(r["StatusCode"]);
             Authentication = DBHelper.GetStringValue(r["Authentication"]);
             CustomerID = DBHelper.GetInt32Value(r["CustomerID"]);
         }

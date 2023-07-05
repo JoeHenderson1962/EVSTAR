@@ -13,13 +13,13 @@ namespace EVSTAR.DB.NET
 {
     public class RSCommentHelper
     {
-        public List<Comment> Select(long ticket_id)
+        public List<Comment> Select(long ticket_id, string clientCode)
         {
             List<Comment> comments = new List<Comment>();
 
             try
             {
-                string constr = ConfigurationManager.ConnectionStrings["Techcycle"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings[clientCode].ConnectionString;
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     con.Open();
